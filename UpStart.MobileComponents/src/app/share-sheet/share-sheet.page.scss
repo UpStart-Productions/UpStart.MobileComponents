@@ -1,0 +1,41 @@
+ion-card {
+  margin: 16px;
+}
+
+ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+ion-card-content {
+  p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+  }
+
+  ul {
+    margin: 8px 0;
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 4px 0;
+  }
+}
+
+ion-chip {
+  margin: 4px 4px 4px 0;
+}
+
+ion-button {
+  margin-top: 8px;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+ion-list {
+  margin-top: 8px;
+}

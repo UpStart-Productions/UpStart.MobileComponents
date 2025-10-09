@@ -6,8 +6,8 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
-    path: 'feature1',
-    loadComponent: () => import('./feature1/feature1.page').then((m) => m.Feature1Page),
+    path: 'share-sheet',
+    loadComponent: () => import('./share-sheet/share-sheet.page').then((m) => m.ShareSheetPage),
   },
   {
     path: 'feature2',
