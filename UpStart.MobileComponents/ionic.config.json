@@ -1,0 +1,7 @@
+{
+  "name": "UpStart.MobileComponents",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
