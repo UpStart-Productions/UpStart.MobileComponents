@@ -5,28 +5,25 @@ import {
   IonToolbar, 
   IonTitle, 
   IonContent, 
-  IonList, 
-  IonListHeader, 
-  IonItem, 
-  IonLabel 
+  IonButtons, 
+  IonBackButton 
 } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-feature2',
+  templateUrl: './feature2.page.html',
+  styleUrls: ['./feature2.page.scss'],
   imports: [
     RouterLink,
     IonHeader, 
     IonToolbar, 
     IonTitle, 
     IonContent, 
-    IonList, 
-    IonListHeader, 
-    IonItem, 
-    IonLabel
+    IonButtons, 
+    IonBackButton
   ],
 })
-export class HomePage {
+export class Feature2Page {
   constructor() {}
 }
+
