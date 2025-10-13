@@ -10,12 +10,32 @@ export const routes: Routes = [
     loadComponent: () => import('./share-sheet/share-sheet.page').then((m) => m.ShareSheetPage),
   },
   {
-    path: 'feature2',
-    loadComponent: () => import('./feature2/feature2.page').then((m) => m.Feature2Page),
+    path: 'widgets',
+    loadComponent: () => import('./widgets/widgets.page').then((m) => m.WidgetsPage),
   },
   {
-    path: 'feature3',
-    loadComponent: () => import('./feature3/feature3.page').then((m) => m.Feature3Page),
+    path: 'widgets/feelings',
+    loadComponent: () => import('./widgets/feelings/feelings-demo.page').then((m) => m.FeelingsDemoPage),
+  },
+  {
+    path: 'widgets/step-card',
+    loadComponent: () => import('./widgets/step-card/step-card-demo.page').then((m) => m.StepCardDemoPage),
+  },
+  {
+    path: 'widgets/progress-ring',
+    loadComponent: () => import('./widgets/progress-ring/progress-ring-demo.page').then((m) => m.ProgressRingDemoPage),
+  },
+  {
+    path: 'date-widgets',
+    loadComponent: () => import('./date-widgets/date-widgets.page').then((m) => m.DateWidgetsPage),
+  },
+  {
+    path: 'date-widgets/calendar',
+    loadComponent: () => import('./date-widgets/calendar/calendar-demo.page').then((m) => m.CalendarDemoPage),
+  },
+  {
+    path: 'date-widgets/button-bar',
+    loadComponent: () => import('./date-widgets/button-bar/button-bar-demo.page').then((m) => m.ButtonBarDemoPage),
   },
   {
     path: 'feature4',

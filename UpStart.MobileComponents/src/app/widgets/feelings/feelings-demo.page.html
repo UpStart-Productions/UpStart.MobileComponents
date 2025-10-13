@@ -1,0 +1,178 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Feelings Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Feelings Widget</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Emoji-Based Feelings Selector</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A beautiful, reusable widget for selecting emotions using emojis with smooth animations.</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="success">
+          <ion-icon name="happy-outline"></ion-icon>
+          <ion-label>12 Emotions</ion-label>
+        </ion-chip>
+        <ion-chip color="primary">
+          <ion-icon name="color-palette-outline"></ion-icon>
+          <ion-label>3 Categories</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="heart-outline"></ion-icon>
+          <ion-label>Smooth Animations</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Example 1: Full Featured -->
+  <div class="example-section">
+    <h2 class="example-title">Example 1: Full Featured</h2>
+    <p class="example-description">Normal mode with text input and action links enabled.</p>
+    
+    <app-feelings
+      (feelingSelected)="onFeeling1Selected($event)"
+      (noteSubmitted)="onFeeling1NoteSubmitted($event)"
+      (actionClicked)="onFeeling1ActionClicked($event)"
+      (feelingCleared)="onFeeling1Cleared()"
+    ></app-feelings>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Features:</strong> Emoji selection → Text input → Action links
+      </p>
+    </ion-text>
+
+    <!-- Status Display -->
+    <div *ngIf="selectedFeeling1" style="margin-top: 12px; padding: 12px; background: var(--ion-color-light); border-radius: 8px;">
+      <p style="margin: 0;"><strong>Selected:</strong> {{ selectedFeeling1.emoji }} {{ selectedFeeling1.label }}</p>
+      <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--ion-color-medium);">
+        Category: {{ selectedFeeling1.category }} | Value: {{ selectedFeeling1.value }}
+      </p>
+    </div>
+
+    <div *ngIf="lastSubmittedNote" style="margin-top: 8px; padding: 12px; background: var(--ion-color-success-tint); border-radius: 8px;">
+      <p style="margin: 0; font-size: 14px;"><strong>Last Note:</strong> {{ lastSubmittedNote }}</p>
+    </div>
+  </div>
+
+  <!-- Example 2: Emoji Only Mode -->
+  <div class="example-section">
+    <h2 class="example-title">Example 2: Emoji-Only Mode</h2>
+    <p class="example-description">Perfect for use as a form control. No text input or actions.</p>
+    
+    <ion-label position="stacked" style="margin-bottom: 8px;">How are you feeling?</ion-label>
+    <app-feelings
+      [emojiOnly]="true"
+      (feelingSelected)="onFeeling2Selected($event)"
+    ></app-feelings>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Usage:</strong> Set <code>[emojiOnly]="true"</code> for form integration
+      </p>
+    </ion-text>
+
+    <div *ngIf="selectedFeeling2" style="margin-top: 12px; padding: 12px; background: var(--ion-color-light); border-radius: 8px;">
+      <p style="margin: 0;">Selected: {{ selectedFeeling2.emoji }} {{ selectedFeeling2.label }}</p>
+    </div>
+  </div>
+
+  <!-- Example 3: Custom Configuration -->
+  <div class="example-section">
+    <h2 class="example-title">Example 3: No Actions</h2>
+    <p class="example-description">Text input enabled but action links hidden.</p>
+    
+    <app-feelings
+      [showActions]="false"
+      (feelingSelected)="onFeeling3Selected($event)"
+      (noteSubmitted)="onFeeling3NoteSubmitted($event)"
+    ></app-feelings>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[showActions]="false"</code>
+      </p>
+    </ion-text>
+
+    <div *ngIf="selectedFeeling3" style="margin-top: 12px; padding: 12px; background: var(--ion-color-light); border-radius: 8px;">
+      <p style="margin: 0;">Selected: {{ selectedFeeling3.emoji }} {{ selectedFeeling3.label }}</p>
+    </div>
+  </div>
+
+  <!-- Event Log -->
+  <ion-card *ngIf="eventLog.length > 0">
+    <ion-card-header>
+      <ion-card-title>Event Log</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item *ngFor="let event of eventLog" lines="none">
+          <ion-label class="ion-text-wrap">
+            <p style="font-size: 12px; font-family: monospace;">{{ event }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Widget Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>12 Emotions</h3>
+            <p>Organized into 3 categories: Calm, Neutral, Distressed</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Smooth Animations</h3>
+            <p>Horizontal scroll with beautiful selection effects</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Two Modes</h3>
+            <p>Normal mode with full features, or emoji-only for forms</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Customizable</h3>
+            <p>Show/hide text input, actions, margins, and more</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Event Emitters</h3>
+            <p>feelingSelected, noteSubmitted, actionClicked, feelingCleared</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <h3>Zero Dependencies</h3>
+            <p>No database or external services required</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-card class="step-card" [class.active]="isActive && showActiveBorder">
+  <ion-card-header>
+    <div class="step-header">
+      <div class="step-number-badge" [ngStyle]="getBadgeStyle()">
+        <span>{{ step?.stepNumber || '?' }}</span>
+        <ion-icon 
+          *ngIf="hasSponsorApproval" 
+          name="ribbon" 
+          class="sponsor-approval-ribbon"
+        ></ion-icon>
+      </div>
+      
+      <!-- Action Icons -->
+      <div *ngIf="showActions" class="step-actions-header">
+        <div class="action-icons">
+          <ion-button fill="clear" size="small" class="action-btn" (click)="onActionClick('readings', $event)">
+            <ion-icon name="book-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" class="action-btn" (click)="onActionClick('journal', $event)">
+            <ion-icon name="journal-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" class="action-btn" (click)="onActionClick('inventory', $event)">
+            <ion-icon name="list-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" class="action-btn" (click)="onActionClick('practice', $event)">
+            <ion-icon name="body-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <p class="step-title">{{ step?.title || 'Loading...' }}</p>
+    <p *ngIf="step?.description && showDescription" class="step-description">
+      {{ step?.description }}
+    </p>
+  </ion-card-content>
+</ion-card>
+

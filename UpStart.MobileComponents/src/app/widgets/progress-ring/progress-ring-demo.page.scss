@@ -1,0 +1,182 @@
+ion-card {
+  margin: 16px;
+}
+
+ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+ion-card-content {
+  p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+  }
+  
+  a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.example-section {
+  margin: 24px 16px;
+  
+  .example-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--ion-color-dark);
+  }
+  
+  .example-description {
+    font-size: 14px;
+    color: var(--ion-color-medium);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+  }
+  
+  a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.demo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: var(--ion-color-light);
+  border-radius: 12px;
+  
+  &.gradient-demo {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.ring-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  
+  .ring-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ion-color-medium);
+  }
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.custom-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-chip {
+  margin: 4px 4px 4px 0;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+  }
+  
+  p {
+    font-size: 13px;
+    color: var(--ion-color-medium);
+    margin: 0;
+  }
+}
+
+code {
+  background: var(--ion-color-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+}
+
+// Tool card styling (for Journal/Inventory example)
+.tool-card {
+  margin: 16px 0;
+  
+  ion-card-content {
+    padding: 16px;
+  }
+}
+
+.tool-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tool-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  
+  .tool-icon {
+    font-size: 32px;
+    color: var(--ion-color-primary);
+    flex-shrink: 0;
+  }
+  
+  .tool-text {
+    flex: 1;
+  }
+  
+  .tool-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px 0;
+    color: var(--ion-color-dark);
+  }
+  
+  .tool-subtitle {
+    font-size: 12px;
+    color: var(--ion-color-medium);
+    margin: 0;
+  }
+}
+
+.completion-indicator {
+  flex-shrink: 0;
+}
+
+.gauge-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ion-color-dark);
+}
+

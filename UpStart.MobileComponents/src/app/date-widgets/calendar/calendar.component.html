@@ -1,0 +1,65 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button (click)="changeMonth(-1)" (touchstart)="$event.stopPropagation()" class="nav-button">
+      <ion-icon name="chevron-back"></ion-icon>
+    </button>
+    
+    <div class="header-center">
+      <div 
+        id="year-trigger"
+        class="month-year-selector"
+        (click)="toggleYearPicker()"
+        (touchstart)="$event.stopPropagation()"
+      >
+        <h2>{{ currentMonth.format('MMM YYYY') }}</h2>
+        <ion-icon name="chevron-down" class="chevron-icon"></ion-icon>
+      </div>
+    </div>
+    
+    <button (click)="changeMonth(1)" (touchstart)="$event.stopPropagation()" class="nav-button">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </button>
+  </div>
+
+  <ion-popover 
+    trigger="year-trigger" 
+    [isOpen]="isYearPickerOpen" 
+    (didDismiss)="isYearPickerOpen = false"
+    side="bottom"
+    alignment="center"
+    [dismissOnSelect]="false"
+    showBackdrop="true"
+  >
+    <ng-template>
+      <div class="year-popover-content">
+        <div class="year-list">
+          <ion-button 
+            *ngFor="let year of yearRange" 
+            (click)="selectYear(year)"
+            fill="clear"
+            [class.selected-year]="year === selectedYear"
+            class="year-option"
+          >
+            {{ year }}
+          </ion-button>
+        </div>
+      </div>
+    </ng-template>
+  </ion-popover>
+
+  <div class="day-names">
+    <div *ngFor="let day of dayNames">{{ day }}</div>
+  </div>
+  
+  <div class="calendar-grid">
+    <div *ngFor="let day of daysInMonth" 
+         (click)="onDayClick(day)"
+         (touchstart)="$event.stopPropagation()"
+         [ngClass]="getDayClass(day)"
+         [class.clickable]="day && !isDayDisabled(day)"
+        >
+      {{ day ? day.date() : '' }}
+    </div>
+  </div>
+</div>
+

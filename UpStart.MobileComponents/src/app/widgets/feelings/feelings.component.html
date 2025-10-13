@@ -1,0 +1,87 @@
+<ion-card [class.no-margin]="noMargin">
+  <div class="feelings-container">
+    <!-- Toast Notification -->
+    <div class="toast-notification" [class.show]="showToast">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <span>Feeling Saved!</span>
+    </div>
+    
+    <!-- Emoji Scroll Container -->
+    <div class="emoji-scroll-container" [class.hidden]="selectedFeeling && !emojiOnly">
+      <button 
+        *ngFor="let feeling of feelings" 
+        class="emoji-button"
+        [class.selected]="isSelected(feeling)"
+        (click)="selectFeeling(feeling, $event)"
+        type="button"
+      >
+        {{ feeling.emoji }}
+      </button>
+    </div>
+    
+    <!-- Text Input Container (overlays emojis) - Hidden in emoji-only mode -->
+    <div 
+      class="feeling-input-overlay" 
+      [class.visible]="selectedFeeling && !emojiOnly && showTextInput"
+    >
+      <div class="custom-textbox">
+        <div class="selected-emoji">
+          {{ selectedFeeling?.emoji }}
+        </div>
+        <input
+          [(ngModel)]="feelingNote"
+          [placeholder]="getFeelingPlaceholder()"
+          type="text"
+          class="feeling-input"
+          (keyup.enter)="submitNote()"
+        />
+        <ion-button 
+          fill="clear" 
+          class="clear-btn"
+          type="button"
+          (click)="clearSelection($event)"
+        >
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-button 
+        size="small"
+        type="button"
+        (click)="submitNote($event)"
+        [disabled]="!feelingNote.trim()"
+      >
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </div>
+    
+    <!-- Action Links - Hidden in emoji-only mode or when showActions is false -->
+    <div 
+      class="link-container" 
+      *ngIf="selectedFeeling && !emojiOnly && showActions"
+    >
+      <span class="action-links">
+        <ion-button 
+          fill="clear" 
+          size="small" 
+          color="primary" 
+          class="tappable-link" 
+          (click)="onActionClick('spotcheck', $event)"
+        >
+          Spot Check
+        </ion-button>
+        or 
+        <ion-button 
+          fill="clear" 
+          size="small" 
+          color="primary" 
+          class="tappable-link" 
+          (click)="onActionClick('journal', $event)"
+        >
+          Journal
+        </ion-button>
+        your feeling?
+      </span>
+    </div>
+  </div>
+</ion-card>
+

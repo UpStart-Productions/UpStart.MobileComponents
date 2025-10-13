@@ -1,0 +1,175 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/date-widgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Button Bar Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Button Bar Widget</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Animated Segmented Control</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A beautiful button bar with a smooth sliding highlight animation. Perfect for tab bars, filters, or any multi-option selection.</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="primary">
+          <ion-icon name="layers-outline"></ion-icon>
+          <ion-label>Segmented Control</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="sparkles-outline"></ion-icon>
+          <ion-label>Smooth Animation</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="color-palette-outline"></ion-icon>
+          <ion-label>Custom Colors</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Example 1: Date Range (NephoPhone Style) -->
+  <div class="example-section">
+    <h2 class="example-title">Example 1: Date Range Selector</h2>
+    <p class="example-description">Default purple theme from NephoPhone's Export Data page.</p>
+    
+    <div class="button-bar-container">
+      <app-button-bar
+        [config]="dateRangeConfig"
+        (buttonSelectedEvent)="onDateRangeSelected($event)">
+      </app-button-bar>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Selected:</strong> {{ selectedDateRange }}<br>
+        <strong>Theme:</strong> Purple (#5433c6) - NephoPhone default
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 2: Tab Bar -->
+  <div class="example-section">
+    <h2 class="example-title">Example 2: Tab Bar</h2>
+    <p class="example-description">Blue theme perfect for view switching.</p>
+    
+    <div class="button-bar-container">
+      <app-button-bar
+        [config]="tabConfig"
+        (buttonSelectedEvent)="onTabSelected($event)">
+      </app-button-bar>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> Custom blue colors with white highlight
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 3: Filter Options -->
+  <div class="example-section">
+    <h2 class="example-title">Example 3: Filter Bar</h2>
+    <p class="example-description">Green/yellow theme for task filtering.</p>
+    
+    <div class="button-bar-container">
+      <app-button-bar
+        [config]="filterConfig"
+        (buttonSelectedEvent)="onFilterSelected($event)">
+      </app-button-bar>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Use Case:</strong> Task lists, status filters, category selection
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 4: Custom Colors -->
+  <div class="example-section">
+    <h2 class="example-title">Example 4: Custom Brand Colors</h2>
+    <p class="example-description">Fully customizable to match your brand.</p>
+    
+    <div class="button-bar-container">
+      <app-button-bar
+        [config]="customConfig"
+        (buttonSelectedEvent)="onCustomSelected($event)">
+      </app-button-bar>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Colors:</strong> Red coral theme (#FF6B6B)
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Event Log -->
+  <ion-card *ngIf="eventLog.length > 0">
+    <ion-card-header>
+      <ion-card-title>Event Log</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item *ngFor="let event of eventLog" lines="none">
+          <ion-label class="ion-text-wrap">
+            <p style="font-size: 12px; font-family: monospace;">{{ event }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Widget Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Smooth Animation</h3>
+            <p>Sliding highlight transitions smoothly between options</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Custom Colors</h3>
+            <p>Fully customizable background, highlight, and label colors</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Flexible Options</h3>
+            <p>Support for 2-6+ buttons with automatic width calculation</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Responsive</h3>
+            <p>Adapts to container width automatically</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <h3>Easy Integration</h3>
+            <p>Simple configuration object and event emission</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

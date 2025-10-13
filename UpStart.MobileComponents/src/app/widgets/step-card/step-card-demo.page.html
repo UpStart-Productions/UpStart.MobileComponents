@@ -1,0 +1,174 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/widgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Step Card Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Step Card Widget</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Versatile Step/Milestone Card</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A flexible card component for displaying steps, milestones, or numbered items with action buttons.</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="primary">
+          <ion-icon name="layers-outline"></ion-icon>
+          <ion-label>Numbered Badge</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="ribbon-outline"></ion-icon>
+          <ion-label>Approval Ribbon</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="color-palette-outline"></ion-icon>
+          <ion-label>Custom Colors</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Example 1: Basic Steps -->
+  <div class="example-section">
+    <h2 class="example-title">Example 1: Basic Steps</h2>
+    <p class="example-description">Standard step cards with actions enabled.</p>
+    
+    <app-step-card
+      *ngFor="let step of steps"
+      [step]="step"
+      [isActive]="step.isActive || false"
+      [showActiveBorder]="true"
+      (actionClicked)="onActionClicked($event)"
+    ></app-step-card>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Features:</strong> Active border, action buttons, descriptions
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 2: Custom Colors -->
+  <div class="example-section">
+    <h2 class="example-title">Example 2: Custom Badge Colors</h2>
+    <p class="example-description">Use custom colors for badges to match your theme.</p>
+    
+    <app-step-card
+      *ngFor="let step of steps; let i = index"
+      [step]="step"
+      [badgeColor]="customColors[i]"
+      [showDescription]="false"
+      (actionClicked)="onActionClicked($event)"
+    ></app-step-card>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[badgeColor]="'#FF6B6B'"</code>
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 3: Completed with Ribbon -->
+  <div class="example-section">
+    <h2 class="example-title">Example 3: With Approval Ribbon</h2>
+    <p class="example-description">Show completion or approval status with a ribbon icon.</p>
+    
+    <app-step-card
+      [step]="steps[0]"
+      [hasSponsorApproval]="true"
+      [badgeColor]="'#4CAF50'"
+      (actionClicked)="onActionClicked($event)"
+    ></app-step-card>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[hasSponsorApproval]="true"</code>
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 4: No Actions -->
+  <div class="example-section">
+    <h2 class="example-title">Example 4: Display Only (No Actions)</h2>
+    <p class="example-description">Hide action buttons for display-only use cases.</p>
+    
+    <app-step-card
+      [step]="steps[1]"
+      [showActions]="false"
+    ></app-step-card>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[showActions]="false"</code>
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Event Log -->
+  <ion-card *ngIf="eventLog.length > 0">
+    <ion-card-header>
+      <ion-card-title>Event Log</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item *ngFor="let event of eventLog" lines="none">
+          <ion-label class="ion-text-wrap">
+            <p style="font-size: 12px; font-family: monospace;">{{ event }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Widget Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Numbered Badge</h3>
+            <p>Circular colored badge with step number</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Action Buttons</h3>
+            <p>4 customizable action buttons (readings, journal, inventory, practice)</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Active State</h3>
+            <p>Highlight active steps with colored border</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Approval Ribbon</h3>
+            <p>Optional gold ribbon icon for completed/approved items</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <h3>Customizable</h3>
+            <p>Badge colors, descriptions, actions all configurable</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

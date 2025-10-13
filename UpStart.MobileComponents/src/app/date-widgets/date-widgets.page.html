@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Date Widgets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Date Widgets</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list [inset]="true">
+    <ion-item button [routerLink]="['/date-widgets/calendar']" detail="true">
+      <ion-label>
+        <h2>Calendar</h2>
+        <p>Custom month/year calendar with date selection</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button [routerLink]="['/date-widgets/button-bar']" detail="true">
+      <ion-label>
+        <h2>Button Bar (Segmented Control)</h2>
+        <p>Animated tab bar with sliding highlight</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

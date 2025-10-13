@@ -1,0 +1,192 @@
+.calendar-container { 
+  width: 100%;
+  background: transparent;
+  border-radius: .5rem;
+  padding: 1rem;
+  height: auto;
+}
+
+.calendar-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1rem;
+  
+  .header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h2 {
+      margin: 0;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    .month-year-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .chevron-icon {
+        color: white;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: transform 0.2s ease;
+      }
+      
+      &:hover .chevron-icon {
+        opacity: 1;
+      }
+    }
+  }
+
+  .nav-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    ion-icon {
+      color: white;
+    }
+  }
+}
+
+// Year popover styles
+.year-popover-content {
+  padding: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  
+  .year-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+    .year-option {
+      --color: var(--ion-color-dark);
+      --color-hover: var(--ion-color-primary);
+      margin: 0;
+      text-align: left;
+      justify-content: flex-start;
+      
+      &.selected-year {
+        --color: var(--ion-color-primary);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.day-names { 
+  display: grid; 
+  grid-template-columns: repeat(7, minmax(0, 1fr)); 
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.calendar-grid { 
+  width: 100%;
+  display: grid; 
+  grid-template-columns: repeat(7, minmax(0, 1fr)); 
+  gap: 4px; 
+}
+
+.calendar-grid div { 
+  padding: 12px 4px; 
+  border-radius: 8px; 
+  text-align: center;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &.clickable {
+    cursor: pointer;
+    
+    &:hover:not(.disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.weekday { 
+  background: rgba(255, 255, 255, 0.05); 
+}
+
+.weekend { 
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.completed { 
+  border: 1px solid rgba(255, 255, 255, 0.4);  
+}
+
+.selected {
+  border: 2px solid white !important;
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+}
+
+.today {
+  color: var(--ion-color-warning);
+  border: 1px solid var(--ion-color-warning);
+}
+
+.empty {
+  background: transparent !important;
+  cursor: default !important;
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .calendar-container {
+    padding: 0.75rem;
+  }
+  
+  .calendar-header {
+    .header-center h2 {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .calendar-grid div {
+    padding: 8px 2px;
+    min-height: 36px;
+    font-size: 0.9rem;
+  }
+  
+  .day-names {
+    font-size: 0.8rem;
+  }
+}
+

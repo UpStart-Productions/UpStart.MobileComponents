@@ -1,0 +1,349 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/widgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Progress Ring Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Progress Ring Widget</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Circular Progress Indicator</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A beautiful, custom SVG-based circular progress ring with smooth animations and customizable colors. Built from scratch with pure CSS - no external dependencies!</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="primary">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+          <ion-label>Percentage Display</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="color-palette-outline"></ion-icon>
+          <ion-label>Color Gradients</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-label>Timer Use</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Example 1: Basic Progress -->
+  <div class="example-section">
+    <h2 class="example-title">Example 1: Basic Progress Ring</h2>
+    <p class="example-description">Standard progress ring with percentage display.</p>
+    
+    <div class="demo-container">
+      <app-progress-ring
+        [progress]="75"
+        [size]="120"
+        [strokeWidth]="12"
+        [showPercentage]="true"
+      ></app-progress-ring>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[progress]="75" [showPercentage]="true"</code>
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 2: Interactive Slider -->
+  <div class="example-section">
+    <h2 class="example-title">Example 2: Interactive Demo</h2>
+    <p class="example-description">Adjust the slider to see the ring update in real-time.</p>
+    
+    <div class="demo-container">
+      <app-progress-ring
+        [progress]="progress"
+        [size]="140"
+        [strokeWidth]="14"
+        [showPercentage]="true"
+        [color]="'var(--ion-color-primary)'"
+      ></app-progress-ring>
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked">Progress: {{ progress }}%</ion-label>
+      <ion-range
+        [(ngModel)]="progress"
+        [min]="0"
+        [max]="100"
+        [pin]="true"
+        color="primary"
+      ></ion-range>
+    </ion-item>
+  </div>
+
+  <!-- Example 3: Gradient Colors -->
+  <div class="example-section">
+    <h2 class="example-title">Example 3: Color Gradient</h2>
+    <p class="example-description">Automatic color transitions: Yellow → Green → Blue</p>
+    
+    <div class="demo-container gradient-demo">
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="25"
+          [size]="100"
+          [strokeWidth]="10"
+          [useGradient]="true"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">25%</span>
+      </div>
+      
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="50"
+          [size]="100"
+          [strokeWidth]="10"
+          [useGradient]="true"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">50%</span>
+      </div>
+      
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="75"
+          [size]="100"
+          [strokeWidth]="10"
+          [useGradient]="true"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">75%</span>
+      </div>
+      
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="100"
+          [size]="100"
+          [strokeWidth]="10"
+          [useGradient]="true"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">100%</span>
+      </div>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[useGradient]="true"</code>
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 4: Custom Colors -->
+  <div class="example-section">
+    <h2 class="example-title">Example 4: Custom Colors</h2>
+    <p class="example-description">Use custom hex colors for your brand.</p>
+    
+    <div class="demo-container gradient-demo">
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="80"
+          [size]="100"
+          [strokeWidth]="10"
+          [color]="'#FF6B6B'"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">Red</span>
+      </div>
+      
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="60"
+          [size]="100"
+          [strokeWidth]="10"
+          [color]="'#4ECDC4'"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">Teal</span>
+      </div>
+      
+      <div class="ring-group">
+        <app-progress-ring
+          [progress]="90"
+          [size]="100"
+          [strokeWidth]="10"
+          [color]="'#95E1D3'"
+          [showPercentage]="true"
+        ></app-progress-ring>
+        <span class="ring-label">Mint</span>
+      </div>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Configuration:</strong> <code>[color]="'#FF6B6B'"</code>
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 5: Journal & Inventory Completion Cards -->
+  <div class="example-section">
+    <h2 class="example-title">Example 5: Completion Cards (Journal/Inventory Style)</h2>
+    <p class="example-description">Replicates the completion indicators used in NephoPhone's step tools.</p>
+    
+    <ion-card class="tool-card">
+      <ion-card-content>
+        <div class="tool-card-content">
+          <div class="tool-info">
+            <ion-icon name="journal-outline" class="tool-icon"></ion-icon>
+            <div class="tool-text">
+              <p class="tool-title">Journal</p>
+              <p class="tool-subtitle">Personal reflections & entries</p>
+            </div>
+          </div>
+          <div class="completion-indicator">
+            <app-progress-ring
+              [progress]="67"
+              [size]="48"
+              [strokeWidth]="5"
+              [color]="'#3880ff'"
+              [backgroundColor]="'#e0e0e0'"
+            >
+              <div class="gauge-text">4/6</div>
+            </app-progress-ring>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="tool-card">
+      <ion-card-content>
+        <div class="tool-card-content">
+          <div class="tool-info">
+            <ion-icon name="list-outline" class="tool-icon"></ion-icon>
+            <div class="tool-text">
+              <p class="tool-title">Inventory</p>
+              <p class="tool-subtitle">At least 10 entries suggested</p>
+            </div>
+          </div>
+          <div class="completion-indicator">
+            <app-progress-ring
+              [progress]="80"
+              [size]="48"
+              [strokeWidth]="5"
+              [color]="'#3880ff'"
+              [backgroundColor]="'#e0e0e0'"
+            >
+              <div class="gauge-text">8/10</div>
+            </app-progress-ring>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Note:</strong> This shows how to create completion indicators like those in NephoPhone's step tool pages.
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 6: Timer Simulation -->
+  <div class="example-section">
+    <h2 class="example-title">Example 6: Timer Simulation</h2>
+    <p class="example-description">Perfect for countdown timers and meditation sessions.</p>
+    
+    <div class="demo-container">
+      <app-progress-ring
+        [progress]="timerProgress"
+        [size]="160"
+        [strokeWidth]="16"
+        [useGradient]="true"
+        [showPercentage]="false"
+        [centerText]="timerProgress + '%'"
+      ></app-progress-ring>
+    </div>
+
+    <div class="timer-controls">
+      <ion-button (click)="startTimer()" [disabled]="timerProgress > 0 && timerProgress < 100">
+        Start
+      </ion-button>
+      <ion-button (click)="stopTimer()" fill="outline">
+        Stop
+      </ion-button>
+      <ion-button (click)="resetTimer()" color="danger" fill="outline">
+        Reset
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Example 7: Custom Center Content -->
+  <div class="example-section">
+    <h2 class="example-title">Example 7: Custom Center Content</h2>
+    <p class="example-description">Add any content in the center using ng-content.</p>
+    
+    <div class="demo-container">
+      <app-progress-ring
+        [progress]="85"
+        [size]="140"
+        [strokeWidth]="12"
+        [color]="'var(--ion-color-success)'"
+      >
+        <div class="custom-center">
+          <ion-icon name="checkmark-circle" style="font-size: 48px; color: var(--ion-color-success);"></ion-icon>
+        </div>
+      </app-progress-ring>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px;">
+        <strong>Usage:</strong> Place content between opening and closing tags
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Widget Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Smooth Animations</h3>
+          <p>CSS transitions for fluid progress updates</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Customizable Size</h3>
+          <p>Any size from tiny to huge</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Color Options</h3>
+          <p>Solid colors, CSS variables, or automatic gradients</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Percentage Display</h3>
+          <p>Optional center percentage text</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="ion-text-wrap">
+          <h3>Custom Content</h3>
+          <p>Add any content in the center via ng-content</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
