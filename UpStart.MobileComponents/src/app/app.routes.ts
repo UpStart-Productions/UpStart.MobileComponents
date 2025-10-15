@@ -50,6 +50,10 @@ export const routes: Routes = [
     loadComponent: () => import('./gamification/gamification-demo.page').then((m) => m.GamificationDemoPage),
   },
   {
+    path: 'pdf-export',
+    loadComponent: () => import('./pdf-export/pdf-export-demo.page').then((m) => m.PdfExportDemoPage),
+  },
+  {
     path: 'feature5',
     loadComponent: () => import('./feature5/feature5.page').then((m) => m.Feature5Page),
   },

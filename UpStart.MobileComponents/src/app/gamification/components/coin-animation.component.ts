@@ -158,3 +158,4 @@ export class CoinAnimationComponent implements OnInit, OnDestroy {
   }
 }
 
+

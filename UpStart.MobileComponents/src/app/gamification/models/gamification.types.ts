@@ -25,3 +25,4 @@ export interface CoinEarnedEvent {
 
 export type HapticType = 'light' | 'medium' | 'success';
 
+

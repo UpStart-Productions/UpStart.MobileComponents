@@ -691,3 +691,4 @@ This component is part of the UpStart Mobile Components library.
 
 **Ready to use!** Add rich text editing to your Ionic app in minutes! 🎉
 
+

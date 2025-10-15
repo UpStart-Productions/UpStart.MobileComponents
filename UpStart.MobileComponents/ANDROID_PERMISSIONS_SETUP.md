@@ -98,3 +98,4 @@ To verify permissions are correctly set:
 
 **Note**: These permissions are already configured for iOS in `ios/App/App/Info.plist`.
 
+

@@ -334,3 +334,4 @@ cp -r rich-text-editor/ your-app/src/app/
 
 This is one of the most sophisticated component extractions in the showcase, demonstrating advanced service architecture, keyboard integration, and real-time state management.
 
+
