@@ -38,12 +38,16 @@ export const routes: Routes = [
     loadComponent: () => import('./date-widgets/calendar/calendar-demo.page').then((m) => m.CalendarDemoPage),
   },
   {
-    path: 'date-widgets/button-bar',
-    loadComponent: () => import('./date-widgets/button-bar/button-bar-demo.page').then((m) => m.ButtonBarDemoPage),
+    path: 'widgets/button-bar',
+    loadComponent: () => import('./widgets/button-bar/button-bar-demo.page').then((m) => m.ButtonBarDemoPage),
   },
   {
     path: 'rich-text-editor',
     loadComponent: () => import('./rich-text-editor/rich-text-editor-demo.page').then((m) => m.RichTextEditorDemoPage),
+  },
+  {
+    path: 'gamification',
+    loadComponent: () => import('./gamification/gamification-demo.page').then((m) => m.GamificationDemoPage),
   },
   {
     path: 'feature5',

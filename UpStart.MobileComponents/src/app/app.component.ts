@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { QuillFloatingToolbarComponent } from './rich-text-editor/components/quill-floating-toolbar.component';
+import { CoinAnimationComponent } from './gamification/components/coin-animation.component';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
@@ -120,7 +121,7 @@ import {
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, QuillFloatingToolbarComponent],
+  imports: [IonApp, IonRouterOutlet, QuillFloatingToolbarComponent, CoinAnimationComponent],
 })
 export class AppComponent implements OnInit {
   constructor(private platform: Platform) {}

@@ -1,0 +1,76 @@
+.tier-section {
+  margin: 24px 0;
+  padding: 16px;
+  background: var(--ion-color-light);
+  border-radius: 12px;
+
+  h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.3em;
+    font-weight: 700;
+  }
+
+  .tier-description {
+    margin: 0 0 16px 0;
+    color: var(--ion-color-medium);
+    font-size: 0.95em;
+  }
+
+  .tier-details {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+
+    p {
+      margin: 4px 0;
+      font-size: 0.9em;
+      
+      strong {
+        color: var(--ion-color-dark);
+      }
+    }
+  }
+}
+
+.status-info {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--ion-color-light);
+  border-radius: 8px;
+
+  p {
+    margin: 4px 0;
+    font-size: 0.95em;
+    
+    strong {
+      color: var(--ion-color-dark);
+    }
+  }
+}
+
+ion-card {
+  margin: 16px 0;
+}
+
+ion-list {
+  background: transparent;
+  
+  ion-item {
+    --background: transparent;
+    --padding-start: 0;
+    
+    ion-label {
+      h3 {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      
+      p {
+        color: var(--ion-color-medium);
+        font-size: 0.9em;
+      }
+    }
+  }
+}
+

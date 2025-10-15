@@ -1,0 +1,247 @@
+/* ===== COIN ANIMATION COMPONENT STYLES ===== */
+
+/* Coin Animation Overlay */
+.coin-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.nepho-coin-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nepho-coin {
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4), 
+              inset 0 4px 8px rgba(255,255,255,0.4), 
+              inset 0 -4px 8px rgba(0,0,0,0.4);
+  border: 3px solid rgba(255,255,255,0.3);
+  animation-fill-mode: forwards;
+  
+  .coin-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    
+    .coin-icon {
+      font-size: 2.5em;
+      margin-bottom: 4px;
+    }
+    
+    .coin-name {
+      font-size: 0.9em;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    
+    .coin-category {
+      font-size: 0.7em;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+  }
+}
+
+/* Coin Sizes */
+.nepho-coin.large { 
+  width: 150px; 
+  height: 150px; 
+  font-size: 16px; 
+}
+
+/* ===== SOPHISTICATED ANIMATION TIERS ===== */
+
+/* Micro Win: Quick scale + gentle glow */
+.coin-micro.coin-scale {
+  animation: micro-bounce 3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Small Milestone: Bounce + single flip */
+.coin-small.coin-flip {
+  animation: small-bounce-flip 3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Medium Milestone: Bounce + spin + hold */
+.coin-medium.coin-spin {
+  animation: medium-bounce-spin 3.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Major Milestone: Full complexity - bounce + triple spin + hold + fade */
+.coin-major.coin-confetti {
+  animation: major-bounce-confetti 4.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
+
+/* MICRO WIN: Pop from bottom → gentle scale → settle → extended pause → flip + grow 500% + fade out */
+@keyframes micro-bounce {
+  0% { 
+    transform: translateY(100vh) scale(0.5) rotateY(0deg); 
+    opacity: 0; 
+  }
+  20% { 
+    transform: translateY(0vh) scale(1.12) rotateY(0deg); 
+    opacity: 1;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 
+                inset 0 4px 8px rgba(255,255,255,0.4), 
+                inset 0 -4px 8px rgba(0,0,0,0.4),
+                0 0 20px rgba(255,255,255,0.4);
+  }
+  30% { 
+    transform: translateY(0vh) scale(1) rotateY(0deg); 
+    opacity: 1; 
+  }
+  67% { 
+    transform: translateY(0vh) scale(1) rotateY(0deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(0vh) scale(5) rotateY(1440deg); 
+    opacity: 0; 
+  }
+}
+
+/* SMALL MILESTONE: Pop from bottom → overshoot → flip once → extended pause → flip + grow 500% + fade out */
+@keyframes small-bounce-flip {
+  0% { 
+    transform: translateY(100vh) scale(0.5) rotateY(0deg); 
+    opacity: 0; 
+  }
+  17% { 
+    transform: translateY(0vh) scale(1.2) rotateY(0deg); 
+    opacity: 1;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 
+                inset 0 4px 8px rgba(255,255,255,0.4), 
+                inset 0 -4px 8px rgba(0,0,0,0.4),
+                0 0 25px rgba(255,255,255,0.5);
+  }
+  30% { 
+    transform: translateY(0vh) scale(1) rotateY(360deg); 
+    opacity: 1; 
+  }
+  67% { 
+    transform: translateY(0vh) scale(1) rotateY(360deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(0vh) scale(5) rotateY(1800deg); 
+    opacity: 0; 
+  }
+}
+
+/* MEDIUM MILESTONE: Pop from bottom → overshoot → spin twice → extended pause → flip + grow 500% + fade out */
+@keyframes medium-bounce-spin {
+  0% { 
+    transform: translateY(100vh) scale(0.5) rotate(0deg); 
+    opacity: 0; 
+  }
+  18% { 
+    transform: translateY(0vh) scale(1.3) rotate(0deg); 
+    opacity: 1;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4), 
+                inset 0 4px 8px rgba(255,255,255,0.4), 
+                inset 0 -4px 8px rgba(0,0,0,0.4),
+                0 0 30px rgba(255,255,255,0.6);
+  }
+  37% { 
+    transform: translateY(0vh) scale(1) rotate(720deg); 
+    opacity: 1; 
+  }
+  74% { 
+    transform: translateY(0vh) scale(1) rotate(720deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(0vh) scale(5) rotate(2160deg); 
+    opacity: 0; 
+  }
+}
+
+/* MAJOR MILESTONE: Full sophisticated animation - pop → overshoot → triple spin → extended pause → flip + grow 500% + fade out */
+@keyframes major-bounce-confetti {
+  0% { 
+    transform: translateY(100vh) scale(0.5) rotateY(0deg); 
+    opacity: 0; 
+  }
+  14% { 
+    transform: translateY(0vh) scale(1.44) rotateY(0deg); 
+    opacity: 1;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.5), 
+                inset 0 6px 12px rgba(255,255,255,0.5), 
+                inset 0 -6px 12px rgba(0,0,0,0.5),
+                0 0 40px rgba(255,255,255,0.7);
+  }
+  35% { 
+    transform: translateY(0vh) scale(1) rotateY(1080deg); 
+    opacity: 1; 
+  }
+  77% { 
+    transform: translateY(0vh) scale(1) rotateY(1080deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(0vh) scale(5) rotateY(2520deg); 
+    opacity: 0; 
+  }
+}
+
+/* ===== CONFETTI STYLES ===== */
+
+.confetti-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999998;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  animation: confetti-fall 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 10000;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0.3);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(var(--peak-height, -75vh)) translateX(calc(var(--direction-x, 0) * 35vw)) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0vh) translateX(calc(var(--direction-x, 0) * 60vw)) scale(0.8);
+    opacity: 0;
+  }
+}
+

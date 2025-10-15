@@ -1,0 +1,37 @@
+<!-- Coin Animation Overlay -->
+<div *ngIf="showCoinAnimation && currentCoinAchievement" 
+     class="coin-overlay">
+  <div class="nepho-coin-container">
+    <div 
+      #coinElement
+      [ngClass]="'nepho-coin large ' + getCoinAnimationClasses(currentCoinAchievement.celebrationTier)"
+      [style.background]="getCoinColor(currentCoinAchievement)">
+      <div class="coin-content">
+        <div class="coin-icon">{{ currentCoinAchievement.icon }}</div>
+        <div class="coin-name">{{ currentCoinAchievement.name }}</div>
+        <div class="coin-category">{{ currentCoinAchievement.category }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confetti Overlay - Independent of Coin Animation -->
+<div 
+  *ngIf="showConfetti" 
+  class="confetti-overlay">
+  
+  <!-- Dynamic confetti pieces -->
+  <div 
+    *ngFor="let piece of confettiPieces; let i = index; trackBy: trackConfettiPiece"
+    class="confetti-piece"
+    [style.left.%]="piece.x"
+    [style.top.%]="piece.y"
+    [style.transform]="'rotate(' + piece.rotation + 'deg)'"
+    [style.animation-delay.ms]="piece.delay"
+    [style.background-color]="piece.color"
+    [style.--peak-height]="'-' + piece.peakHeight + 'vh'"
+    [style.--direction-x]="piece.directionX"
+    [style.--direction-y]="piece.directionY">
+  </div>
+</div>
+

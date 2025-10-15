@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gamification System</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <!-- Introduction -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>🎮 Tiered Celebration System</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A sophisticated gamification system with 4 celebration tiers, each with unique animations, haptic feedback, and visual effects.</p>
+      <p><strong>Tap a button below to see each tier in action!</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Animation Tiers -->
+  <div class="tier-section">
+    <h2>🎯 Micro Win</h2>
+    <p class="tier-description">Quick scale + gentle glow. For frequent, subtle rewards.</p>
+    <ion-button expand="block" color="success" (click)="triggerMicroWin()">
+      <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+      Trigger Micro Win
+    </ion-button>
+    <div class="tier-details">
+      <p><strong>Duration:</strong> 3 seconds</p>
+      <p><strong>Haptic:</strong> Light</p>
+      <p><strong>Use Case:</strong> Journal saved, gratitude added</p>
+    </div>
+  </div>
+
+  <div class="tier-section">
+    <h2>🔄 Small Milestone</h2>
+    <p class="tier-description">Bounce + flip animation with sparkles.</p>
+    <ion-button expand="block" color="primary" (click)="triggerSmallMilestone()">
+      <ion-icon slot="start" name="ribbon-outline"></ion-icon>
+      Trigger Small Milestone
+    </ion-button>
+    <div class="tier-details">
+      <p><strong>Duration:</strong> 3 seconds</p>
+      <p><strong>Haptic:</strong> Medium</p>
+      <p><strong>Use Case:</strong> First journal of the day, 3-day streak</p>
+    </div>
+  </div>
+
+  <div class="tier-section">
+    <h2>⚡ Medium Milestone</h2>
+    <p class="tier-description">Bounce + double spin with streamers.</p>
+    <ion-button expand="block" color="secondary" (click)="triggerMediumMilestone()">
+      <ion-icon slot="start" name="star-outline"></ion-icon>
+      Trigger Medium Milestone
+    </ion-button>
+    <div class="tier-details">
+      <p><strong>Duration:</strong> 3.8 seconds</p>
+      <p><strong>Haptic:</strong> Success</p>
+      <p><strong>Use Case:</strong> Inventory completed, prompts finished</p>
+    </div>
+  </div>
+
+  <div class="tier-section">
+    <h2>🎉 Major Milestone (Step)</h2>
+    <p class="tier-description">Full celebration - triple spin + confetti explosion!</p>
+    <ion-button expand="block" color="tertiary" (click)="triggerMajorMilestone()">
+      <ion-icon slot="start" name="trophy-outline"></ion-icon>
+      Trigger Major Milestone
+    </ion-button>
+    <div class="tier-details">
+      <p><strong>Duration:</strong> 4.3 seconds + confetti</p>
+      <p><strong>Haptic:</strong> Success + notification</p>
+      <p><strong>Use Case:</strong> Step completed, major achievement</p>
+    </div>
+  </div>
+
+  <div class="tier-section">
+    <h2>🏆 Major Milestone (Sobriety)</h2>
+    <p class="tier-description">Gold confetti celebration for sobriety milestones!</p>
+    <ion-button expand="block" color="warning" (click)="triggerSobrietyMilestone()">
+      <ion-icon slot="start" name="trophy-outline"></ion-icon>
+      Trigger Sobriety Milestone
+    </ion-button>
+    <div class="tier-details">
+      <p><strong>Duration:</strong> 4.3 seconds + confetti</p>
+      <p><strong>Haptic:</strong> Success + notification</p>
+      <p><strong>Use Case:</strong> 30/60/90 days sober, annual chips</p>
+    </div>
+  </div>
+
+  <!-- Testing Tools -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>🧪 Testing Tools</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="testAllTiers()">
+        <ion-icon slot="start" name="play-outline"></ion-icon>
+        Test All Tiers (Sequential)
+      </ion-button>
+      
+      <ion-button expand="block" fill="outline" (click)="testHaptics()">
+        <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
+        Test Haptic Feedback
+      </ion-button>
+
+      <div class="status-info">
+        <p><strong>Queue Length:</strong> {{ getQueueLength() }}</p>
+        <p><strong>Currently Animating:</strong> {{ isAnimating() ? 'Yes' : 'No' }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>✨ Key Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="flame" color="danger"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            <h3>4 Celebration Tiers</h3>
+            <p>Micro, Small, Medium, Major - each with unique animations</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon slot="start" name="phone-portrait-outline" color="primary"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            <h3>Haptic Feedback</h3>
+            <p>Device-specific tactile feedback for each tier</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon slot="start" name="sparkles-outline" color="warning"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            <h3>Confetti Effects</h3>
+            <p>112 dynamic confetti pieces for major milestones</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon slot="start" name="list-outline" color="success"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            <h3>Animation Queue</h3>
+            <p>Sequential processing prevents overlapping animations</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon slot="start" name="color-palette-outline" color="tertiary"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            <h3>Dynamic Colors</h3>
+            <p>Each achievement has customizable hex color coding</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Technical Details -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>⚙️ Technical Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Animation Engine:</strong> Pure CSS keyframes (60fps)</p>
+      <p><strong>Haptic Plugin:</strong> @capacitor/haptics</p>
+      <p><strong>State Management:</strong> RxJS BehaviorSubject</p>
+      <p><strong>Platform Support:</strong> iOS, Android, Web (graceful degradation)</p>
+      <p><strong>Performance:</strong> Minimal DOM manipulation, efficient change detection</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+

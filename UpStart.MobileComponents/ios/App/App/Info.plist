@@ -45,5 +45,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses the camera to capture photos for adding to your content.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app accesses your photo library to select photos for adding to your content.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app saves photos to your photo library.</string>
 </dict>
 </plist>
