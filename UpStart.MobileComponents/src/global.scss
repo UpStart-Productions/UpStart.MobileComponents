@@ -35,3 +35,75 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/**
+ * Quill Editor Styles
+ * -----------------------------------------------------
+ */
+@import 'quill/dist/quill.snow.css';
+
+/* Global Quill Editor Customization */
+.ql-editor {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  color: var(--ion-text-color, #000000) !important;
+  
+  &.ql-blank::before {
+    font-style: normal;
+    color: var(--ion-color-medium);
+  }
+  
+  // Ensure proper spacing for formatted content
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    line-height: 1.3;
+  }
+  
+  p {
+    margin: 0.5rem 0;
+  }
+  
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  li {
+    margin: 0.25rem 0;
+  }
+  
+  strong {
+    font-weight: 600;
+  }
+  
+  a {
+    color: var(--ion-color-primary);
+    text-decoration: underline;
+  }
+}
+
+// Hide Quill's default toolbar (we use floating toolbar)
+.ql-toolbar {
+  display: none !important;
+}
+
+// Quill container styling
+.ql-container {
+  font-family: inherit;
+  font-size: inherit;
+  border: none !important;
+}
+
+// Dark mode support for Quill
+@media (prefers-color-scheme: dark) {
+  .ql-editor {
+    color: var(--ion-text-color, #ffffff) !important;
+    
+    &.ql-blank::before {
+      color: var(--ion-color-medium);
+    }
+  }
+}

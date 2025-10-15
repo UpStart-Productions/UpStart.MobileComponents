@@ -1,0 +1,94 @@
+ion-card {
+  margin: 16px;
+}
+
+ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+ion-card-content {
+  p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+  }
+}
+
+.example-section {
+  margin: 24px 16px;
+  
+  .example-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--ion-color-dark);
+  }
+  
+  .example-description {
+    font-size: 14px;
+    color: var(--ion-color-medium);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+  }
+}
+
+.editor-wrapper {
+  border: 1px solid var(--ion-color-light-shade);
+  border-radius: 12px;
+  overflow: visible;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  
+  // Ensure the editor inside is clickable
+  ::ng-deep app-quill-editor {
+    pointer-events: auto;
+    
+    .quill-editor-container {
+      pointer-events: auto;
+    }
+    
+    quill-editor {
+      pointer-events: auto;
+    }
+    
+    .ql-editor {
+      pointer-events: auto;
+      min-height: 100px;
+    }
+  }
+}
+
+.editor-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+ion-chip {
+  margin: 4px 4px 4px 0;
+}
+
+ion-list {
+  margin: 0;
+  
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+    
+    p {
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      margin: 0;
+    }
+  }
+}
+

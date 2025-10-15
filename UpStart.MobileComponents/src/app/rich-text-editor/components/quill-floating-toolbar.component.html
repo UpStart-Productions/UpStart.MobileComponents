@@ -1,0 +1,115 @@
+<div class="quill-floating-toolbar">
+  <div class="toolbar-container">
+    
+    <!-- H1 button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      [class.active]="isFormatActive('header1')"
+      (mousedown)="$event.preventDefault()"
+      (click)="onFormatClick('header1', $event)">
+      <span class="tool-label">H1</span>
+    </ion-button>
+    
+    <!-- Bold button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      [class.active]="isFormatActive('bold')"
+      (mousedown)="$event.preventDefault()"
+      (click)="onFormatClick('bold', $event)">
+      <span class="tool-label bold">B</span>
+    </ion-button>
+
+    <!-- Italic button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      [class.active]="isFormatActive('italic')"
+      (mousedown)="$event.preventDefault()"
+      (click)="onFormatClick('italic', $event)">
+      <span class="tool-label italic">I</span>
+    </ion-button>
+
+    <!-- Underline button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      [class.active]="isFormatActive('underline')"
+      (mousedown)="$event.preventDefault()"
+      (click)="onFormatClick('underline', $event)">
+      <span class="tool-label underline">U</span>
+    </ion-button>
+
+    <!-- Bullet list button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      [class.active]="isFormatActive('bullet')"
+      (mousedown)="$event.preventDefault()"
+      (click)="onFormatClick('bullet', $event)">
+      <ion-icon name="list-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Ordered list button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      [class.active]="isFormatActive('ordered')"
+      (mousedown)="$event.preventDefault()"
+      (click)="onFormatClick('ordered', $event)">
+      <ion-icon name="editor-ol" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Link button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      (mousedown)="$event.preventDefault()"
+      (click)="onLinkClick()">
+      <ion-icon name="link-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Attach button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      (mousedown)="$event.preventDefault()"
+      (click)="onAttachClick()">
+      <ion-icon name="attach-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Photo button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      (mousedown)="$event.preventDefault()"
+      (click)="onPhotoClick()">
+      <ion-icon name="image-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Divider -->
+    <div class="toolbar-divider"></div>
+
+    <!-- Clear content button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      color="danger"
+      (mousedown)="$event.preventDefault()"
+      (click)="onClearClick()">
+      <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Close keyboard button -->
+    <ion-button 
+      fill="clear" 
+      size="small"
+      (mousedown)="$event.preventDefault()"
+      (click)="onCloseKeyboard()">
+      <ion-icon name="chevron-down-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+  </div>
+</div>
+

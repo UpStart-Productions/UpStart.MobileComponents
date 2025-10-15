@@ -1,0 +1,16 @@
+<div class="avatar-picker-container">
+  <div class="avatar-scroll-container">
+    <div 
+      *ngFor="let avatar of avatarOptions" 
+      class="avatar-option"
+      [class.selected]="isSelected(avatar)"
+      (click)="selectAvatar(avatar)">
+      <img 
+        [src]="avatar" 
+        [alt]="'Avatar option'" 
+        class="avatar-image"
+        (error)="onImageError($event)">
+    </div>
+  </div>
+</div>
+

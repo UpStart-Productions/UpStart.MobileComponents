@@ -26,6 +26,10 @@ export const routes: Routes = [
     loadComponent: () => import('./widgets/progress-ring/progress-ring-demo.page').then((m) => m.ProgressRingDemoPage),
   },
   {
+    path: 'widgets/avatar-picker',
+    loadComponent: () => import('./widgets/avatar-picker/avatar-picker-demo.page').then((m) => m.AvatarPickerDemoPage),
+  },
+  {
     path: 'date-widgets',
     loadComponent: () => import('./date-widgets/date-widgets.page').then((m) => m.DateWidgetsPage),
   },
@@ -38,8 +42,8 @@ export const routes: Routes = [
     loadComponent: () => import('./date-widgets/button-bar/button-bar-demo.page').then((m) => m.ButtonBarDemoPage),
   },
   {
-    path: 'feature4',
-    loadComponent: () => import('./feature4/feature4.page').then((m) => m.Feature4Page),
+    path: 'rich-text-editor',
+    loadComponent: () => import('./rich-text-editor/rich-text-editor-demo.page').then((m) => m.RichTextEditorDemoPage),
   },
   {
     path: 'feature5',

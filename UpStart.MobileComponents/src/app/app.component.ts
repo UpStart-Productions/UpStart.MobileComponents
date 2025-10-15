@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import { QuillFloatingToolbarComponent } from './rich-text-editor/components/quill-floating-toolbar.component';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 import {
   addCircleOutline,
@@ -107,6 +110,7 @@ import {
   sunnyOutline,
   textOutline,
   timeOutline,
+  trashOutline,
   trophyOutline,
   waterOutline,
   colorPaletteOutline,
@@ -116,12 +120,14 @@ import {
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet],
+  imports: [IonApp, IonRouterOutlet, QuillFloatingToolbarComponent],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  constructor(private platform: Platform) {}
 
   ngOnInit() {
+    this.initializeApp();
+    
     // Register all Ionic icons globally
     addIcons({
       addCircleOutline,
@@ -228,10 +234,31 @@ export class AppComponent implements OnInit {
       sunnyOutline,
       textOutline,
       timeOutline,
+      trashOutline,
       trophyOutline,
       waterOutline,
       colorPaletteOutline,
       happyOutline,
+      // Custom icons
+      'logo-spotify': './assets/custom-icons/logo-spotify.svg',
+      'bar-chart1': './assets/custom-icons/bar-chart1.svg',
+      'donut-chart1': './assets/custom-icons/donut-chart1.svg',
+      'list1': './assets/custom-icons/list1.svg',
+      'editor-ol': './assets/custom-icons/editor-ol.svg',
+      'award': './assets/custom-icons/award.svg',
     });
+  }
+
+  async initializeApp() {
+    await this.platform.ready();
+    
+    if (this.platform.is('capacitor')) {
+      // Hide the splash screen after the app is ready
+      await SplashScreen.hide();
+      
+      // Configure the status bar
+      await StatusBar.setStyle({ style: Style.Light });
+      await StatusBar.setBackgroundColor({ color: '#ffffff' });
+    }
   }
 }

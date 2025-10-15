@@ -1,0 +1,127 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/widgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Avatar Picker Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Avatar Picker Widget</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Scrollable Avatar Selector</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A horizontal scrolling avatar picker with 30 unique avatars. Features smooth animations, selected state highlighting, and responsive design.</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="primary">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-label>30 Avatars</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-label>Selected State</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="images-outline"></ion-icon>
+          <ion-label>Horizontal Scroll</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Current Selection Display -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Current Selection</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="current-avatar-display">
+        <ion-avatar class="large-avatar">
+          <img [src]="selectedAvatar" alt="Selected avatar">
+        </ion-avatar>
+        <div class="avatar-info">
+          <h3>Selected Avatar</h3>
+          <p>{{ selectedAvatar }}</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Avatar Picker Demo -->
+  <div class="example-section">
+    <h2 class="example-title">Choose Your Avatar</h2>
+    <p class="example-description">Scroll horizontally and tap to select. The selected avatar will scale up and show a blue border.</p>
+    
+    <app-avatar-picker
+      [selectedAvatar]="selectedAvatar"
+      (avatarSelected)="onAvatarSelected($event)">
+    </app-avatar-picker>
+  </div>
+
+  <!-- Event Log -->
+  <ion-card *ngIf="eventLog.length > 0">
+    <ion-card-header>
+      <ion-card-title>Event Log</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item *ngFor="let event of eventLog" lines="none">
+          <ion-label class="ion-text-wrap">
+            <p style="font-size: 12px; font-family: monospace;">{{ event }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Widget Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>30 Unique Avatars</h3>
+            <p>Diverse collection of avatar images</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Horizontal Scrolling</h3>
+            <p>Smooth touch scrolling with hidden scrollbar</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Selected State</h3>
+            <p>Highlighted border and scale animation</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Hover Effects</h3>
+            <p>Subtle scale on hover (desktop)</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <h3>Responsive Design</h3>
+            <p>Adapts size for mobile screens</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
