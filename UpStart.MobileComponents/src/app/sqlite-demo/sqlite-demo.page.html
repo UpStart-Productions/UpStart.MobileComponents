@@ -1,0 +1,245 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>SQLite ToDo Demo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showDatabaseInfo()">
+        <ion-icon name="stats-chart-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-container">
+      <p>Initializing SQLite database...</p>
+    </div>
+
+    <!-- Main Content -->
+    <div *ngIf="!isLoading && isInitialized">
+      <!-- Stats Card -->
+      <ion-card class="stats-card">
+        <ion-card-content>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value">{{ stats.total }}</div>
+              <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">{{ stats.pending }}</div>
+              <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">{{ stats.completed }}</div>
+              <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">{{ stats.highPriority }}</div>
+              <div class="stat-label">High Priority</div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Add/Edit Todo Form -->
+      <ion-card *ngIf="isAdding" class="todo-form-card">
+        <ion-card-header>
+          <ion-card-title>{{ editingTodo ? 'Edit Todo' : 'New Todo' }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-input
+              label="Title"
+              labelPlacement="stacked"
+              [(ngModel)]="todoForm.title"
+              placeholder="Enter todo title"
+              required
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-textarea
+              label="Description"
+              labelPlacement="stacked"
+              [(ngModel)]="todoForm.description"
+              placeholder="Enter description (optional)"
+              rows="3"
+            ></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-select
+              label="Priority"
+              labelPlacement="stacked"
+              [(ngModel)]="todoForm.priority"
+            >
+              <ion-select-option value="low">Low</ion-select-option>
+              <ion-select-option value="medium">Medium</ion-select-option>
+              <ion-select-option value="high">High</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-input
+              label="Due Date"
+              labelPlacement="stacked"
+              type="date"
+              [(ngModel)]="todoForm.dueDate"
+            ></ion-input>
+          </ion-item>
+
+          <div class="form-actions">
+            <ion-button expand="block" (click)="saveTodo()">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              {{ editingTodo ? 'Update' : 'Create' }}
+            </ion-button>
+            <ion-button expand="block" fill="outline" color="medium" (click)="cancelAdd()">
+              <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+              Cancel
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <ion-button
+          *ngIf="!isAdding"
+          expand="block"
+          (click)="startAddTodo()"
+        >
+          <ion-icon name="add-outline" slot="start"></ion-icon>
+          Add New Todo
+        </ion-button>
+
+        <div class="secondary-actions" *ngIf="!isAdding">
+          <ion-button
+            fill="outline"
+            color="danger"
+            size="small"
+            (click)="deleteCompleted()"
+            [disabled]="stats.completed === 0"
+          >
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            Delete Completed ({{ stats.completed }})
+          </ion-button>
+
+          <ion-button
+            fill="outline"
+            color="medium"
+            size="small"
+            (click)="resetDatabase()"
+          >
+            <ion-icon name="refresh-outline" slot="start"></ion-icon>
+            Reset Database
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Search and Filter -->
+      <ion-card class="filter-card">
+        <ion-card-content>
+          <ion-searchbar
+            [(ngModel)]="searchQuery"
+            (ionInput)="onSearchChange($event)"
+            placeholder="Search todos..."
+            animated
+          ></ion-searchbar>
+
+          <ion-segment
+            [(ngModel)]="filterSegment"
+            (ionChange)="onFilterChange($event)"
+          >
+            <ion-segment-button value="all">
+              <ion-label>All ({{ stats.total }})</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="pending">
+              <ion-label>Pending ({{ stats.pending }})</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="completed">
+              <ion-label>Done ({{ stats.completed }})</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Todos List -->
+      <ion-card *ngIf="filteredTodos.length === 0" class="empty-state">
+        <ion-card-content>
+          <ion-icon name="checkmark-circle-outline" color="medium"></ion-icon>
+          <p>{{ searchQuery ? 'No todos match your search' : 'No todos yet!' }}</p>
+          <ion-button *ngIf="!searchQuery && !isAdding" fill="outline" (click)="startAddTodo()">
+            <ion-icon name="add-outline" slot="start"></ion-icon>
+            Create Your First Todo
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-list *ngIf="filteredTodos.length > 0">
+        <ion-item *ngFor="let todo of filteredTodos" class="todo-item" [class.completed]="todo.completed">
+          <ion-checkbox
+            slot="start"
+            [checked]="todo.completed"
+            (ionChange)="toggleTodo(todo)"
+          ></ion-checkbox>
+
+          <ion-label class="todo-label" (click)="startEditTodo(todo)">
+            <h2 [class.strikethrough]="todo.completed">{{ todo.title }}</h2>
+            <p *ngIf="todo.description">{{ todo.description }}</p>
+            <div class="todo-meta">
+              <ion-badge [color]="getPriorityColor(todo.priority)" size="small">
+                <ion-icon name="flag-outline"></ion-icon>
+                {{ todo.priority }}
+              </ion-badge>
+              <ion-badge *ngIf="todo.dueDate" color="medium" size="small">
+                <ion-icon name="calendar-outline"></ion-icon>
+                {{ formatDate(todo.dueDate) }}
+              </ion-badge>
+            </div>
+          </ion-label>
+
+          <div slot="end" class="todo-actions">
+            <ion-button fill="clear" size="small" (click)="startEditTodo(todo)">
+              <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small" color="danger" (click)="deleteTodo(todo)">
+              <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <!-- Implementation Info -->
+      <ion-card class="info-card">
+        <ion-card-header>
+          <ion-card-title>SQLite Implementation</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Features Demonstrated:</strong></p>
+          <ul>
+            <li>Database initialization & connection management</li>
+            <li>Full CRUD operations (Create, Read, Update, Delete)</li>
+            <li>Filtering & searching</li>
+            <li>Statistics & aggregation queries</li>
+            <li>TypeScript type safety</li>
+            <li>Error handling</li>
+            <li>Cross-platform support (iOS/Android/Web)</li>
+          </ul>
+
+          <p style="margin-top: 16px;"><strong>Database Details:</strong></p>
+          <ul>
+            <li><code>@capacitor-community/sqlite</code></li>
+            <li>Offline-first data storage</li>
+            <li>Automatic table creation</li>
+            <li>Type-safe service pattern</li>
+          </ul>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+

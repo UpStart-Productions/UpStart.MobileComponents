@@ -1,0 +1,226 @@
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  color: #666;
+}
+
+// Stats Card
+.stats-card {
+  margin-bottom: 16px;
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    text-align: center;
+
+    .stat-item {
+      .stat-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--ion-color-primary);
+        margin-bottom: 4px;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+}
+
+// Todo Form Card
+.todo-form-card {
+  margin-bottom: 16px;
+  border: 2px solid var(--ion-color-primary);
+
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin-bottom: 12px;
+  }
+
+  .form-actions {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+// Action Buttons
+.action-buttons {
+  margin-bottom: 16px;
+
+  .secondary-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+
+    ion-button {
+      flex: 1;
+    }
+  }
+}
+
+// Filter Card
+.filter-card {
+  margin-bottom: 16px;
+
+  ion-searchbar {
+    padding: 0;
+    margin-bottom: 12px;
+  }
+
+  ion-segment {
+    margin: 0;
+  }
+}
+
+// Empty State
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+
+  ion-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 16px;
+  }
+}
+
+// Todo List Items
+.todo-item {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  &.completed {
+    opacity: 0.6;
+  }
+
+  .todo-label {
+    cursor: pointer;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 4px 0;
+
+      &.strikethrough {
+        text-decoration: line-through;
+        color: #999;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 8px 0;
+    }
+
+    .todo-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      ion-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+
+        ion-icon {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .todo-actions {
+    display: flex;
+    gap: 4px;
+  }
+}
+
+// Info Card
+.info-card {
+  margin-top: 24px;
+  background: #f8f9fa;
+
+  ul {
+    margin: 8px 0;
+    padding-left: 20px;
+
+    li {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #333;
+
+      code {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+      }
+    }
+  }
+
+  p {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #333;
+
+    strong {
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .secondary-actions {
+    flex-direction: column;
+  }
+}
+
+// Animations
+.todo-item {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

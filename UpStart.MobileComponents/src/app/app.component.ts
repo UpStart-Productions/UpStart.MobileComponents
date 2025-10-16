@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { QuillFloatingToolbarComponent } from './rich-text-editor/components/quill-floating-toolbar.component';
 import { CoinAnimationComponent } from './gamification/components/coin-animation.component';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { DatabaseBaseService } from './sqlite-demo/services/database-base.service';
+import { defineCustomElements as jeepSqlite } from 'jeep-sqlite/loader';
 
 import {
   addCircleOutline,
@@ -122,9 +124,13 @@ import {
   selector: 'app-root',
   templateUrl: 'app.component.html',
   imports: [IonApp, IonRouterOutlet, QuillFloatingToolbarComponent, CoinAnimationComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent implements OnInit {
-  constructor(private platform: Platform) {}
+  constructor(
+    private platform: Platform,
+    private dbBase: DatabaseBaseService
+  ) {}
 
   ngOnInit() {
     this.initializeApp();
@@ -252,6 +258,25 @@ export class AppComponent implements OnInit {
 
   async initializeApp() {
     await this.platform.ready();
+    
+    // Initialize SQLite for web platform
+    if (!this.platform.is('capacitor')) {
+      console.log('🌐 Initializing SQLite for web...');
+      jeepSqlite(window);
+      const jeepEl = document.createElement('jeep-sqlite');
+      document.body.appendChild(jeepEl);
+      await customElements.whenDefined('jeep-sqlite');
+      console.log('✅ jeep-sqlite web component ready');
+    }
+    
+    // Initialize SQLite database
+    try {
+      console.log('🗄️ Initializing SQLite database...');
+      await this.dbBase.initializePlugin();
+      console.log('✅ SQLite database initialized');
+    } catch (error) {
+      console.error('❌ Failed to initialize SQLite:', error);
+    }
     
     if (this.platform.is('capacitor')) {
       // Hide the splash screen after the app is ready

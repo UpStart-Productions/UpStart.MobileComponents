@@ -54,6 +54,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pdf-export/pdf-export-demo.page').then((m) => m.PdfExportDemoPage),
   },
   {
+    path: 'video-header',
+    loadComponent: () => import('./video-header/video-header-demo.page').then((m) => m.VideoHeaderDemoPage),
+  },
+  {
+    path: 'sqlite-demo',
+    loadComponent: () => import('./sqlite-demo/sqlite-demo.page').then((m) => m.SqliteDemoPage),
+  },
+  {
     path: 'feature5',
     loadComponent: () => import('./feature5/feature5.page').then((m) => m.Feature5Page),
   },

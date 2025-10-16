@@ -1,0 +1,325 @@
+.video-content {
+  position: relative;
+}
+
+// Safe area handling - transparent by default
+.video-content::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: var(--ion-safe-area-top, 0px);
+  background: transparent; // Let video show through
+  z-index: 0; // Below video
+}
+
+// Header container styles
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .avatar-container {
+    flex-shrink: 0;
+    width: auto;
+    padding-right: 4px;
+    margin-left: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .user-avatar {
+      font-size: 40px;
+      color: #fff;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    }
+  }
+
+  .greeting-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  .settings-container {
+    flex-shrink: 0;
+    width: auto;
+    padding-left: 4px;
+
+    ion-button {
+      --padding-start: 8px;
+      --padding-end: 8px;
+      --padding-top: 8px;
+      --padding-bottom: 8px;
+
+      ion-icon {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+// Video background - covers entire top area including safe space
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  // height will be set dynamically via Angular binding
+  object-fit: cover;
+  z-index: 0;
+}
+
+// Black overlay for video
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  // height will be set dynamically via Angular binding
+  background-color: rgba(0, 0, 0, 0.2); // 20% opacity for better text readability
+  z-index: 1;
+}
+
+// Transparent header styling
+.transparent-header {
+  --background: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  --ion-color-base: transparent;
+  --border-width: 0 !important;
+  border: none !important;
+  position: relative;
+  z-index: 10; // Above video but below content
+  transition: all 0.6s ease; // Slower, smoother transition for background changes
+}
+
+.transparent-toolbar {
+  --background: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  --ion-color-base: transparent;
+  --border-width: 0 !important;
+  border: none !important;
+  position: relative;
+  z-index: 10; // Above video but below content
+  transition: all 0.6s ease; // Slower, smoother transition for background changes
+}
+
+// When scrolled, add white background with subtle shadow
+.transparent-header.scrolled {
+  --background: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.transparent-header.scrolled .transparent-toolbar {
+  --background: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+// Update text colors when scrolled
+.transparent-header.scrolled .greeting-title {
+  color: var(--ion-color-dark) !important;
+  text-shadow: none;
+}
+
+.transparent-header.scrolled .settings-container ion-button,
+.transparent-header.scrolled .settings-container ion-icon {
+  color: var(--ion-color-dark) !important;
+  --color: var(--ion-color-dark) !important;
+  text-shadow: none;
+}
+
+.transparent-header.scrolled .user-avatar {
+  color: var(--ion-color-dark) !important;
+  filter: none;
+}
+
+// Default toolbar styles (white text on video)
+.transparent-toolbar ion-title {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.transparent-toolbar ion-button,
+.transparent-toolbar ion-icon {
+  color: #fff !important;
+  --color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+// Hero card styling
+.hero-card {
+  background: transparent;
+  color: white;
+  margin: 0 !important;
+  margin-bottom: -65px !important;
+  border-radius: 0px;
+  position: relative;
+  top: calc(-1 * var(--ion-safe-area-top, 0px));
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  z-index: 2; // Above video and overlay
+}
+
+.hero-card.extend-top {
+  margin-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  padding-top: calc(var(--ion-safe-area-top, 0px) + 8px);
+}
+
+.hero-card ion-card-content {
+  padding-top: 0;
+  position: relative;
+  z-index: 2; // Ensure content appears above video and overlay
+}
+
+// Hero content styling
+.hero-content {
+  .stats-display {
+    margin-bottom: 16px;
+
+    .main-stat {
+      text-align: center;
+
+      h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      p {
+        font-size: 1.1rem;
+        margin: 4px 0 0 0;
+        opacity: 0.9;
+        font-weight: 500;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .info-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--ion-color-primary-rgb), 0.9) 0%,
+      rgba(var(--ion-color-secondary-rgb), 0.7) 100%
+    );
+    border-radius: 12px;
+    margin-bottom: 16px;
+
+    ion-icon {
+      font-size: 24px;
+      opacity: 0.9;
+    }
+
+    .info-label {
+      font-size: 0.9rem;
+      margin: 0;
+      opacity: 0.8;
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      margin: 4px 0 0 0;
+      font-weight: 600;
+    }
+  }
+
+  .hero-action-btn {
+    --color: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(255, 255, 255, 0.3);
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+// Implementation details styling
+.implementation-details {
+  .detail-item {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ion-color-primary);
+      margin: 0 0 6px 0;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #666;
+      margin: 0;
+
+      code {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+// Card spacing
+ion-card {
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// List item spacing
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+}
+
