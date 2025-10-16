@@ -42,6 +42,10 @@ export const routes: Routes = [
     loadComponent: () => import('./widgets/button-bar/button-bar-demo.page').then((m) => m.ButtonBarDemoPage),
   },
   {
+    path: 'widgets/tabs-fab',
+    loadComponent: () => import('./widgets/tabs-fab/tabs-fab-demo.page').then((m) => m.TabsFabDemoPage),
+  },
+  {
     path: 'rich-text-editor',
     loadComponent: () => import('./rich-text-editor/rich-text-editor-demo.page').then((m) => m.RichTextEditorDemoPage),
   },

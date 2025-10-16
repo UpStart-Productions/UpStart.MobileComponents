@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/widgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tabs + FAB Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+    <!-- Demo Info -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Tab Bar + Centered FAB</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h3>Features Demonstrated:</h3>
+        <ul>
+          <li>Bottom tab navigation with 4 tabs</li>
+          <li>Centered floating action button (FAB)</li>
+          <li>Hidden spacer tab to make room for FAB</li>
+          <li>Icon switching (outline → solid when selected)</li>
+          <li>Quick actions menu via action sheet</li>
+          <li>iOS safe area handling</li>
+        </ul>
+
+        <h3 style="margin-top: 24px;">Try It Out:</h3>
+        <p>Scroll down to see the demo tab bar at the bottom. Tap tabs to see icon switching and click the + button for quick actions!</p>
+
+        <div class="stats-box">
+          <p><strong>Current Tab:</strong> {{ selectedTab }}</p>
+          <p><strong>FAB Clicks:</strong> {{ fabClickCount }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Implementation Details -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Implementation Details</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h4>1. Hidden Spacer Tab</h4>
+        <p>A disabled, invisible tab button creates space for the FAB in the center:</p>
+        <div class="code-example">
+          <code>&lt;ion-tab-button class="fab-spacer" disabled="true" style="visibility: hidden;"&gt;</code>
+        </div>
+
+        <h4>2. Centered FAB Positioning</h4>
+        <p>CSS for perfect centering above the tab bar:</p>
+        <div class="code-example">
+          <code>left: 50%; transform: translateX(-50%); bottom: 50px;</code>
+        </div>
+
+        <h4>3. Icon Switching</h4>
+        <p>Each tab contains both outline and solid icons. CSS toggles visibility:</p>
+        <div class="code-example">
+          <code>.tab-selected .solid-icon &#123; display: block; &#125;</code><br/>
+          <code>.tab-selected .outline-icon &#123; display: none; &#125;</code>
+        </div>
+
+        <h4>4. iOS Safe Area</h4>
+        <p>Handles iOS home indicator:</p>
+        <div class="code-example">
+          <code>padding-bottom: calc(env(safe-area-inset-bottom) - 9px);</code>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Code Examples -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Usage Example</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Complete code examples are available in the <code>README.md</code> file in the same directory.</p>
+        <p>Key files to reference:</p>
+        <ul>
+          <li><code>tabs-fab-demo.page.html</code> - Complete HTML structure</li>
+          <li><code>tabs-fab-demo.page.ts</code> - TypeScript logic</li>
+          <li><code>tabs-fab-demo.page.scss</code> - All styling</li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Spacer for demo -->
+    <div style="height: 200px;"></div>
+  </div>
+
+  <!-- Demo Tab Bar (Fixed at Bottom) -->
+  <div class="demo-tab-bar-container">
+    <ion-tab-bar class="demo-tab-bar">
+      <ion-tab-button 
+        [class.tab-selected]="selectedTab === 'home'"
+        (click)="selectedTab = 'home'">
+        <ion-icon aria-hidden="true" name="home-outline" class="outline-icon"></ion-icon>
+        <ion-icon aria-hidden="true" name="home" class="solid-icon"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button 
+        [class.tab-selected]="selectedTab === 'profile'"
+        (click)="selectedTab = 'profile'">
+        <ion-icon aria-hidden="true" name="person-outline" class="outline-icon"></ion-icon>
+        <ion-icon aria-hidden="true" name="person" class="solid-icon"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-tab-button>
+
+      <!-- Spacer for the floating action button -->
+      <ion-tab-button class="fab-spacer" disabled="true" style="visibility: hidden;">
+      </ion-tab-button>
+
+      <ion-tab-button 
+        [class.tab-selected]="selectedTab === 'explore'"
+        (click)="selectedTab = 'explore'">
+        <ion-icon aria-hidden="true" name="grid-outline" class="outline-icon"></ion-icon>
+        <ion-icon aria-hidden="true" name="grid" class="solid-icon"></ion-icon>
+        <ion-label>Explore</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button 
+        [class.tab-selected]="selectedTab === 'settings'"
+        (click)="selectedTab = 'settings'">
+        <ion-icon aria-hidden="true" name="settings-outline" class="outline-icon"></ion-icon>
+        <ion-icon aria-hidden="true" name="settings" class="solid-icon"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+    <!-- Floating Action Button -->
+    <ion-fab class="fab-center">
+      <ion-fab-button (click)="openQuickActions()">
+        <ion-icon name="add-outline" style="color: white;"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>
