@@ -1,11 +1,11 @@
-<div class="quill-editor-container" [style.height]="config.height">
+<div class="quill-editor-container" [style.height]="config.height" [style.width]="'100%'">
   <quill-editor
     [(ngModel)]="content"
     [modules]="quillConfig"
-    [placeholder]="config.placeholder || 'Start writing...'"
-    [readOnly]="config.readOnly || false"
-    (onEditorCreated)="onQuillEditorCreated($event)"
-    (onContentChanged)="onQuillContentChanged($event)">
+    [readOnly]="config.readOnly ?? false"
+    (onEditorCreated)="onEditorCreated($event)"
+    (ngModelChange)="onModelChange($event)"
+    [placeholder]="config.placeholder ?? 'Start writing...'">
   </quill-editor>
 </div>
 

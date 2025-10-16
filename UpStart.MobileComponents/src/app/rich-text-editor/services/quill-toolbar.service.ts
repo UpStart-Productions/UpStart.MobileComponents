@@ -392,18 +392,13 @@ export class QuillToolbarService {
     const editor = this.activeQuillEditor$.value;
     const currentState = this.toolbarState$.value;
     
-    // Only update keyboard height, don't automatically hide toolbar
-    // Visibility is controlled by editor focus/blur
     const newState: QuillToolbarState = {
       ...currentState,
-      keyboardHeight: this.keyboardHeight
+      keyboardHeight: this.keyboardHeight,
+      isVisible: !!(editor && this.isKeyboardOpen)
     };
 
     this.toolbarState$.next(newState);
-    console.log('🔧 QuillToolbarService: Keyboard state updated', {
-      keyboardHeight: newState.keyboardHeight,
-      isKeyboardOpen: this.isKeyboardOpen
-    });
   }
 }
 

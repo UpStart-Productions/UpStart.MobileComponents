@@ -44,45 +44,77 @@
 
 /* Global Quill Editor Customization */
 .ql-editor {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
   font-size: 16px !important;
   line-height: 1.5 !important;
-  color: var(--ion-text-color, #000000) !important;
-  
-  &.ql-blank::before {
-    font-style: normal;
-    color: var(--ion-color-medium);
-  }
-  
-  // Ensure proper spacing for formatted content
-  h1 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin: 1rem 0 0.5rem 0;
-    line-height: 1.3;
-  }
-  
-  p {
-    margin: 0.5rem 0;
-  }
-  
-  ul, ol {
-    margin: 0.5rem 0;
-    padding-left: 1.5rem;
-  }
-  
-  li {
-    margin: 0.25rem 0;
-  }
-  
-  strong {
-    font-weight: 600;
-  }
-  
-  a {
-    color: var(--ion-color-primary);
-    text-decoration: underline;
-  }
+  color: var(--ion-text-color, #023049) !important;
+}
+
+.ql-container {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+}
+
+/* Ensure Quill editor content matches app styling */
+.ql-editor p,
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3,
+.ql-editor h4,
+.ql-editor h5,
+.ql-editor h6 {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+  color: var(--ion-text-color, #023049) !important;
+}
+
+.ql-editor p {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Header sizing and CRITICAL BEHAVIOR FIXES */
+.ql-editor h1,
+.ql-container .ql-editor h1,
+quill-editor .ql-editor h1,
+app-quill-editor .ql-editor h1 {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+  display: block !important;
+}
+
+.ql-editor h2,
+.ql-container .ql-editor h2,
+quill-editor .ql-editor h2,
+app-quill-editor .ql-editor h2 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+  display: block !important;
+}
+
+.ql-editor h3,
+.ql-container .ql-editor h3,
+quill-editor .ql-editor h3,
+app-quill-editor .ql-editor h3 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  direction: ltr !important;
+  display: block !important;
+}
+
+/* Photo styles in Quill editor */
+.ql-editor img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  margin: 8px 0 !important;
+  display: block !important;
 }
 
 // Hide Quill's default toolbar (we use floating toolbar)
