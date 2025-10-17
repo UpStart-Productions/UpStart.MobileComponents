@@ -103,12 +103,30 @@
   --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   font-weight: 600;
   font-size: 16px;
-  margin: 0 0 32px 0;
+  margin: 0 0 12px 0;
   max-width: 300px;
   animation: fadeInUp 0.6s ease-out 0.5s both;
   
   &:hover {
     --background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+// Share Button
+.share-button {
+  --border-color: white;
+  --color: white;
+  --border-radius: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0 0 32px 0;
+  max-width: 300px;
+  animation: fadeInUp 0.6s ease-out 0.6s both;
+  
+  &:hover {
+    --background: rgba(255, 255, 255, 0.1);
   }
 }
 

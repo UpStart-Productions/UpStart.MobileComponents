@@ -20,8 +20,10 @@ import {
   globeOutline, 
   logoLinkedin, 
   logoTwitter, 
-  logoGithub 
+  logoGithub,
+  shareOutline
 } from 'ionicons/icons';
+import { Share } from '@capacitor/share';
 
 @Component({
   selector: 'app-about-modal',
@@ -50,7 +52,8 @@ export class AboutModalComponent {
       globeOutline, 
       logoLinkedin, 
       logoTwitter, 
-      logoGithub 
+      logoGithub,
+      shareOutline
     });
   }
 
@@ -81,6 +84,19 @@ export class AboutModalComponent {
   openGitHub() {
     // Placeholder
     console.log('Open GitHub');
+  }
+
+  async shareApp() {
+    try {
+      await Share.share({
+        title: 'UpStart Mobile Components',
+        text: 'Check out this amazing collection of production-ready Ionic & Angular components! Perfect for accelerating mobile app development.',
+        url: 'https://github.com/upstart-productions/mobile-components',
+        dialogTitle: 'Share UpStart Components'
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   }
 }
 

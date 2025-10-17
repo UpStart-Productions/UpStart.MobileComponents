@@ -7,7 +7,8 @@ import {
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { arrowForwardOutline } from 'ionicons/icons';
+import { arrowForwardOutline, shareOutline } from 'ionicons/icons';
+import { Share } from '@capacitor/share';
 
 @Component({
   selector: 'app-intro',
@@ -23,11 +24,24 @@ import { arrowForwardOutline } from 'ionicons/icons';
 })
 export class IntroPage {
   constructor(private router: Router) {
-    addIcons({ arrowForwardOutline });
+    addIcons({ arrowForwardOutline, shareOutline });
   }
 
   navigateToShowcase() {
     this.router.navigate(['/home']);
+  }
+
+  async shareApp() {
+    try {
+      await Share.share({
+        title: 'UpStart Mobile Components',
+        text: 'Check out this amazing collection of production-ready Ionic & Angular components! Perfect for accelerating mobile app development.',
+        url: 'https://github.com/upstart-productions/mobile-components',
+        dialogTitle: 'Share UpStart Components'
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   }
 }
 
