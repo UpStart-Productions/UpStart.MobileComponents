@@ -1,0 +1,12 @@
+<div class="date-scroller" *ngIf="dates" #dateScroller>
+    <button 
+        *ngFor="let date of dates; let i = index" 
+        (click)="selectDate(date)" 
+        class="date"
+        [ngClass]="{ 'today': date.isToday, 'selected': date.isSelected, 'completed': completionDates.includes(date.date) }"
+    >
+        <span [ngClass]="{ 'today': date.isToday, 'selected': date.isSelected }" class="txt-small-caps">{{ date.dayName }}</span>
+        <span [ngClass]="{ 'today': date.isToday, 'selected': date.isSelected }" class="txt-normal-bold">{{ date.dayNumber }}</span>
+    </button>
+</div>
+

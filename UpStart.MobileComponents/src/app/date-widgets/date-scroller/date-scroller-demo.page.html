@@ -1,0 +1,173 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/date-widgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Date Scroller Widget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Date Scroller</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Horizontal Scrolling Date Picker</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A smooth horizontal scrolling date selector with automatic centering on today. Perfect for exercise trackers, habit builders, and timeline navigation.</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="primary">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-label>Auto-scroll to Today</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-label>2 Months Range</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+          <ion-label>Completion Tracking</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-icon name="eye-outline"></ion-icon>
+          <ion-label>Visual States</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Example 1: Basic Date Scroller -->
+  <div class="example-section">
+    <h2 class="example-title">Example 1: Basic Date Scroller</h2>
+    <p class="example-description">Simple date selection with auto-scroll to today's date.</p>
+    
+    <div class="scroller-container">
+      <app-date-scroller
+        (dateSelectedEvent)="onDate1Selected($event)">
+      </app-date-scroller>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px; padding: 0 16px;">
+        <strong>Selected:</strong> {{ selectedDate1 ? (selectedDate1 | date:'EEEE, MMMM d, yyyy') : 'None (tap a date above)' }}
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 2: With Completed Dates -->
+  <div class="example-section">
+    <h2 class="example-title">Example 2: Activity Tracker</h2>
+    <p class="example-description">Shows completed activities with green border indicators - perfect for exercise or habit tracking.</p>
+    
+    <div class="scroller-container">
+      <app-date-scroller
+        [completedDates]="completedDates"
+        (dateSelectedEvent)="onDate2Selected($event)">
+      </app-date-scroller>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px; padding: 0 16px;">
+        <strong>Configuration:</strong> <code>[completedDates]="myDates"</code><br>
+        <strong>Completed Days:</strong> {{ completedDates.length }} days marked<br>
+        <strong>Selected:</strong> {{ selectedDate2 ? (selectedDate2 | date:'MMM d, yyyy') : 'None' }}
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Example 3: Interactive Demo -->
+  <div class="example-section">
+    <h2 class="example-title">Example 3: Interactive Activity Tracking</h2>
+    <p class="example-description">Tap dates to mark/unmark activities in real-time. Try it!</p>
+    
+    <div class="scroller-container">
+      <app-date-scroller
+        [completedDates]="activityDates"
+        (dateSelectedEvent)="onDate3Selected($event)">
+      </app-date-scroller>
+    </div>
+
+    <ion-text color="medium">
+      <p style="font-size: 12px; margin-top: 16px; padding: 0 16px;">
+        <strong>Activities Completed:</strong> {{ activityCount }} days<br>
+        <strong>Last Selected:</strong> {{ selectedDate3 ? (selectedDate3 | date:'MMM d, yyyy') : 'None' }}
+      </p>
+    </ion-text>
+  </div>
+
+  <!-- Event Log -->
+  <ion-card *ngIf="eventLog.length > 0">
+    <ion-card-header>
+      <ion-card-title>Event Log</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item *ngFor="let event of eventLog" lines="none">
+          <ion-label class="ion-text-wrap">
+            <p style="font-size: 12px; font-family: monospace;">{{ event }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Widget Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Auto-scroll to Today</h3>
+            <p>Automatically centers on today's date when loaded</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Date Range: 2 Months ↔ 1 Week</h3>
+            <p>Shows dates from 2 months ago to 1 week in the future</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Visual States</h3>
+            <p>Today (orange), Selected (blue), Completed (green border)</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Smooth Scrolling</h3>
+            <p>Native smooth scroll behavior for great UX</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Completion Tracking</h3>
+            <p>Pass array of completed dates for visual indicators</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Responsive Design</h3>
+            <p>Fixed-width date buttons with horizontal overflow</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <h3>Event Emission</h3>
+            <p>Emits complete date object with formatted strings</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

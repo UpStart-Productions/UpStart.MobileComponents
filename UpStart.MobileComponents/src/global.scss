@@ -139,3 +139,43 @@ app-quill-editor .ql-editor h3 {
     }
   }
 }
+
+/**
+ * Color Picker Widget Colors
+ * -----------------------------------------------------
+ * Colors used by the Color Picker form widget
+ */
+:root {
+  // Color picker colors
+  --ion-color-prussian-blue: #003049;
+  --ion-color-blue-ribbon: #0370f8;
+  --ion-color-picton-blue: #52c0f6;
+  --ion-color-emerald: #32c058;
+  --ion-color-red-orange: #fe4c40;
+  --ion-color-magenta: #fd13eb;
+  --ion-color-purple-heart: #4f2cc2;
+  --ion-color-amethyst: #a44ad3;
+  --ion-color-sunshade: #fe8b25;
+}
+
+// Background classes for color picker
+.background-prussian-blue { background-color: var(--ion-color-prussian-blue); }
+.background-blue-ribbon { background-color: var(--ion-color-blue-ribbon); }
+.background-picton-blue { background-color: var(--ion-color-picton-blue); }
+.background-emerald { background-color: var(--ion-color-emerald); }
+.background-red-orange { background-color: var(--ion-color-red-orange); }
+.background-magenta { background-color: var(--ion-color-magenta); }
+.background-purple-heart { background-color: var(--ion-color-purple-heart); }
+.background-amethyst { background-color: var(--ion-color-amethyst); }
+.background-sunshade { background-color: var(--ion-color-sunshade); }
+
+// Border classes for color picker
+.border-prussian-blue { border-color: var(--ion-color-prussian-blue) !important; }
+.border-blue-ribbon { border-color: var(--ion-color-blue-ribbon) !important; }
+.border-picton-blue { border-color: var(--ion-color-picton-blue) !important; }
+.border-emerald { border-color: var(--ion-color-emerald) !important; }
+.border-red-orange { border-color: var(--ion-color-red-orange) !important; }
+.border-magenta { border-color: var(--ion-color-magenta) !important; }
+.border-purple-heart { border-color: var(--ion-color-purple-heart) !important; }
+.border-amethyst { border-color: var(--ion-color-amethyst) !important; }
+.border-sunshade { border-color: var(--ion-color-sunshade) !important; }

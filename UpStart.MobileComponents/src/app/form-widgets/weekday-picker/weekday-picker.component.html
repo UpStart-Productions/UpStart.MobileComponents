@@ -1,0 +1,17 @@
+<div class="control-container">
+  <span class="label">{{label}}</span>
+  <div class="button-container">
+    <button 
+      *ngFor="let day of weekdayOptions | keyvalue:returnZero; let i = index"
+      class="btn-weekday-picker"
+      [ngClass]="{'selected': selectedWeekdays[i].selected}"
+      (click)="toggleSelectedDay(day)"
+    >{{ day.value }}</button>
+    <button 
+      class="btn-every-day selected"
+      [ngClass]="{'selected': isEveryDaySelected()}"
+      (click)="selectEveryDay()"
+    >Every day</button>     
+  </div>
+</div>
+

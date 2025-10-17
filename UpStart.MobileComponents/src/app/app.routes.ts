@@ -38,6 +38,22 @@ export const routes: Routes = [
     loadComponent: () => import('./date-widgets/calendar/calendar-demo.page').then((m) => m.CalendarDemoPage),
   },
   {
+    path: 'date-widgets/date-scroller',
+    loadComponent: () => import('./date-widgets/date-scroller/date-scroller-demo.page').then((m) => m.DateScrollerDemoPage),
+  },
+  {
+    path: 'form-widgets',
+    loadComponent: () => import('./form-widgets/form-widgets.page').then((m) => m.FormWidgetsPage),
+  },
+  {
+    path: 'form-widgets/color-picker',
+    loadComponent: () => import('./form-widgets/color-picker/color-picker-demo.page').then((m) => m.ColorPickerDemoPage),
+  },
+  {
+    path: 'form-widgets/weekday-picker',
+    loadComponent: () => import('./form-widgets/weekday-picker/weekday-picker-demo.page').then((m) => m.WeekdayPickerDemoPage),
+  },
+  {
     path: 'widgets/button-bar',
     loadComponent: () => import('./widgets/button-bar/button-bar-demo.page').then((m) => m.ButtonBarDemoPage),
   },
