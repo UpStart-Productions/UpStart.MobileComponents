@@ -1,0 +1,177 @@
+.intro-content {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+// Logo Placeholder
+.logo-container {
+  margin-bottom: 48px;
+}
+
+.logo-placeholder {
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.logo-text {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+}
+
+.logo-subtext {
+  font-size: 10px;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 3px;
+  margin-top: -4px;
+}
+
+// Title
+.intro-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 16px 0;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+// Description
+.intro-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 40px 0;
+  max-width: 400px;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+// Features List
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 14px;
+  
+  ion-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  
+  span {
+    text-align: left;
+  }
+}
+
+// CTA Button
+.explore-button {
+  --background: white;
+  --color: #667eea;
+  --border-radius: 12px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 32px 0;
+  max-width: 300px;
+  animation: fadeInUp 0.6s ease-out 0.5s both;
+  
+  &:hover {
+    --background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+// Footer
+.intro-footer {
+  animation: fadeIn 0.6s ease-out 0.6s both;
+  
+  p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+}
+
+// Animations
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 375px) {
+  .intro-title {
+    font-size: 28px;
+  }
+  
+  .intro-description {
+    font-size: 14px;
+  }
+  
+  .logo-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .logo-text {
+    font-size: 28px;
+  }
+}
+

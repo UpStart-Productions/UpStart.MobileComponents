@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true" class="intro-content">
+  <div class="intro-container">
+    <!-- Logo Placeholder -->
+    <div class="logo-container">
+      <div class="logo-placeholder">
+        <span class="logo-text">UpStart</span>
+        <span class="logo-subtext">PRODUCTIONS</span>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h1 class="intro-title">Mobile Components</h1>
+
+    <!-- Description -->
+    <p class="intro-description">
+      A curated collection of production-ready Ionic & Angular components extracted from real-world mobile applications.
+    </p>
+
+    <!-- Features List -->
+    <div class="features-list">
+      <div class="feature-item">
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+        <span>Fully documented with usage examples</span>
+      </div>
+      <div class="feature-item">
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+        <span>Standalone components ready to use</span>
+      </div>
+      <div class="feature-item">
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+        <span>Battle-tested in production apps</span>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <ion-button 
+      expand="block" 
+      size="large" 
+      class="explore-button"
+      (click)="navigateToShowcase()">
+      Explore Components
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+
+    <!-- Footer -->
+    <div class="intro-footer">
+      <p>Built with ❤️ by UpStart Productions</p>
+    </div>
+  </div>
+</ion-content>
+
