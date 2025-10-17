@@ -30,6 +30,10 @@ export const routes: Routes = [
     loadComponent: () => import('./widgets/avatar-picker/avatar-picker-demo.page').then((m) => m.AvatarPickerDemoPage),
   },
   {
+    path: 'widgets/number-flipper',
+    loadComponent: () => import('./widgets/number-flipper/number-flipper-demo.page').then((m) => m.NumberFlipperDemoPage),
+  },
+  {
     path: 'date-widgets',
     loadComponent: () => import('./date-widgets/date-widgets.page').then((m) => m.DateWidgetsPage),
   },
@@ -52,6 +56,14 @@ export const routes: Routes = [
   {
     path: 'form-widgets/weekday-picker',
     loadComponent: () => import('./form-widgets/weekday-picker/weekday-picker-demo.page').then((m) => m.WeekdayPickerDemoPage),
+  },
+  {
+    path: 'charts',
+    loadComponent: () => import('./charts/charts.page').then((m) => m.ChartsPage),
+  },
+  {
+    path: 'charts/progress-line-chart',
+    loadComponent: () => import('./charts/progress-line-chart/progress-line-chart-demo.page').then((m) => m.ProgressLineChartDemoPage),
   },
   {
     path: 'widgets/button-bar',

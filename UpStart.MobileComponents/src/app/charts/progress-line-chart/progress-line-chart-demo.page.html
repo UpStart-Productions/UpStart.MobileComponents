@@ -1,0 +1,147 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/charts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Progress Line Chart</ion-title>
+  </ion-toolbar>
+  <div class="chart-container">
+    <app-metric-switcher
+      [total]="total"
+      [metric]="metric"
+      [percentageChange]="percentageChange"
+      [percentageChangeDirection]="percentageChangeDirection"
+      (metricSelectedEvent)="onMetricChange($event)">
+    </app-metric-switcher>
+    <div echarts [options]="chartOptions" (chartInit)="onChartInit($event)" class="chart"></div>
+    <ion-row>
+      <ion-col size="12" style="padding-left: 20px; padding-right: 20px;">
+        <app-button-bar 
+          [config]="buttonBarConfig"
+          (buttonSelectedEvent)="onDateRangeChange($event)">
+        </app-button-bar>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Introduction Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Interactive Progress Chart</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>An ECharts-powered line chart with smooth animations, gradient fills, and interactive axis pointer. Perfect for tracking progress over time.</p>
+      <div style="margin-top: 12px;">
+        <ion-chip color="primary">
+          <ion-icon name="trending-up-outline"></ion-icon>
+          <ion-label>Smooth Lines</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-icon name="layers-outline"></ion-icon>
+          <ion-label>Gradient Fill</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-icon name="timer-outline"></ion-icon>
+          <ion-label>Date Ranges</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-icon name="bar-chart-outline"></ion-icon>
+          <ion-label>4 Metrics</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Chart Features</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Interactive Axis Pointer</h3>
+            <p>Drag the pointer to see values at different dates</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>4 Switchable Metrics</h3>
+            <p>Weight, Volume, Distance, Duration with unique colors</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>6 Time Range Options</h3>
+            <p>1W, 1M, 3M, 6M, 1Y, All time periods</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Animated Number Display</h3>
+            <p>Flipper animation when total value changes</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Percentage Change Indicator</h3>
+            <p>Up/down arrows with percentage change from start to end</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Smooth Gradient Fill</h3>
+            <p>Area under the line with color-matched gradient</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>Clean Minimal Design</h3>
+            <p>Hidden axes for a modern, uncluttered look</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <h3>Responsive & Touch-friendly</h3>
+            <p>Works great on mobile with drag interactions</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Usage Instructions -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Try It Out!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>1.</strong> Drag the chart pointer left/right to see different dates</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>2.</strong> Switch metrics using the dropdown (Weight, Volume, Distance, Duration)</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>3.</strong> Try different time ranges with the button bar below the chart</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>4.</strong> Watch the animated number flipper update as you drag</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
