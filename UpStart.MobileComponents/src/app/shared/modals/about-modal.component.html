@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>About UpStart Productions</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Intro Text Section -->
+  <div class="intro-section">
+    <div class="logo-placeholder-small">
+      <span class="logo-text">UpStart</span>
+      <span class="logo-subtext">PRODUCTIONS</span>
+    </div>
+    
+    <p class="about-text">
+      UpStart Productions specializes in building beautiful, user-friendly mobile applications 
+      with cutting-edge technology. This showcase demonstrates our reusable component library, 
+      battle-tested in production apps and ready to accelerate your next project.
+    </p>
+  </div>
+
+  <!-- Contact List -->
+  <ion-list [inset]="true">
+    <ion-item button (click)="openEmail()" detail="true">
+      <ion-icon slot="start" name="mail-outline" color="primary"></ion-icon>
+      <ion-label>
+        <h3>Email</h3>
+        <p>contact@upstartproductions.com</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button (click)="openWebsite()" detail="true">
+      <ion-icon slot="start" name="globe-outline" color="secondary"></ion-icon>
+      <ion-label>
+        <h3>Website</h3>
+        <p>www.upstartproductions.com</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button (click)="openLinkedIn()" detail="true">
+      <ion-icon slot="start" name="logo-linkedin" color="primary"></ion-icon>
+      <ion-label>
+        <h3>LinkedIn</h3>
+        <p>Connect with us</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button (click)="openTwitter()" detail="true">
+      <ion-icon slot="start" name="logo-twitter" color="tertiary"></ion-icon>
+      <ion-label>
+        <h3>Twitter</h3>
+        <p>Follow for updates</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item button (click)="openGitHub()" detail="true">
+      <ion-icon slot="start" name="logo-github" color="dark"></ion-icon>
+      <ion-label>
+        <h3>GitHub</h3>
+        <p>View our open source work</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Footer -->
+  <div class="modal-footer">
+    <p>Version 1.0.0</p>
+    <p>© 2025 UpStart Productions. All rights reserved.</p>
+  </div>
+</ion-content>
+

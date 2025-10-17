@@ -7,11 +7,17 @@ import {
   IonContent,
   IonButtons,
   IonBackButton,
+  IonButton,
+  IonIcon,
   IonList,
   IonItem,
-  IonLabel
+  IonLabel,
+  ModalController
 } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { informationCircleOutline } from 'ionicons/icons';
+import { AboutModalComponent } from '../shared/modals/about-modal.component';
 
 @Component({
   selector: 'app-form-widgets',
@@ -26,6 +32,8 @@ import { RouterLink } from '@angular/router';
     IonContent,
     IonButtons,
     IonBackButton,
+    IonButton,
+    IonIcon,
     IonList,
     IonItem,
     IonLabel,
@@ -33,5 +41,15 @@ import { RouterLink } from '@angular/router';
   ]
 })
 export class FormWidgetsPage {
+  constructor(private modalCtrl: ModalController) {
+    addIcons({ informationCircleOutline });
+  }
+
+  async presentAboutModal() {
+    const modal = await this.modalCtrl.create({
+      component: AboutModalComponent
+    });
+    await modal.present();
+  }
 }
 

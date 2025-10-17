@@ -10,8 +10,14 @@ import {
   IonItem,
   IonLabel,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonButton,
+  IonIcon,
+  ModalController
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { informationCircleOutline } from 'ionicons/icons';
+import { AboutModalComponent } from '../shared/modals/about-modal.component';
 
 @Component({
   selector: 'app-widgets',
@@ -29,10 +35,21 @@ import {
     IonItem,
     IonLabel,
     IonButtons,
-    IonBackButton
+    IonBackButton,
+    IonButton,
+    IonIcon
   ]
 })
 export class WidgetsPage {
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {
+    addIcons({ informationCircleOutline });
+  }
+
+  async presentAboutModal() {
+    const modal = await this.modalCtrl.create({
+      component: AboutModalComponent
+    });
+    await modal.present();
+  }
 }
 

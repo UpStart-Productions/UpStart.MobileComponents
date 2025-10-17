@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/intro"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Component Showcase
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAboutModal()">
+        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
