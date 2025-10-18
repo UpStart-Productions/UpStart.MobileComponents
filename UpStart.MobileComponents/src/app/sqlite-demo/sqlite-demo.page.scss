@@ -1,3 +1,8 @@
+ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .page-content {
   max-width: 900px;
   margin: 0 auto;
@@ -62,7 +67,7 @@
 
 // Action Buttons
 .action-buttons {
-  margin-bottom: 16px;
+  margin: 0 16px 16px 16px; // Match card margins
 
   .secondary-actions {
     display: flex;
@@ -103,6 +108,12 @@
     color: #666;
     margin-bottom: 16px;
   }
+}
+
+// Todo List
+ion-list {
+  margin: 0 16px; // Match card margins
+  padding: 0;
 }
 
 // Todo List Items

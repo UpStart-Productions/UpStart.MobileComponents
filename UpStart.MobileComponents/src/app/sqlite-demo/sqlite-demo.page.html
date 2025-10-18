@@ -4,11 +4,6 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>SQLite ToDo Demo</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="showDatabaseInfo()">
-        <ion-icon name="stats-chart-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -172,10 +167,6 @@
         <ion-card-content>
           <ion-icon name="checkmark-circle-outline" color="medium"></ion-icon>
           <p>{{ searchQuery ? 'No todos match your search' : 'No todos yet!' }}</p>
-          <ion-button *ngIf="!searchQuery && !isAdding" fill="outline" (click)="startAddTodo()">
-            <ion-icon name="add-outline" slot="start"></ion-icon>
-            Create Your First Todo
-          </ion-button>
         </ion-card-content>
       </ion-card>
 

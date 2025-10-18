@@ -28,9 +28,6 @@
 <ion-content [fullscreen]="true">
   <!-- Introduction Card -->
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Interactive Progress Chart</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
       <p>An ECharts-powered line chart with smooth animations, gradient fills, and interactive axis pointer. Perfect for tracking progress over time.</p>
       <div style="margin-top: 12px;">
@@ -54,13 +51,41 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- Features List -->
+  <!-- Usage Instructions -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Chart Features</ion-card-title>
+      <ion-card-title>Try It Out!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-list [inset]="true">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>1.</strong> Drag the chart pointer left/right to see different dates</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>2.</strong> Switch metrics using the dropdown (Weight, Volume, Distance, Duration)</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>3.</strong> Try different time ranges with the button bar below the chart</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">
+            <p><strong>4.</strong> Watch the animated number flipper update as you drag</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Features List -->
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
         <ion-item>
           <ion-label class="ion-text-wrap">
             <h3>Interactive Axis Pointer</h3>
@@ -107,37 +132,6 @@
           <ion-label class="ion-text-wrap">
             <h3>Responsive & Touch-friendly</h3>
             <p>Works great on mobile with drag interactions</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-
-  <!-- Usage Instructions -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Try It Out!</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list [inset]="true">
-        <ion-item lines="none">
-          <ion-label class="ion-text-wrap">
-            <p><strong>1.</strong> Drag the chart pointer left/right to see different dates</p>
-          </ion-label>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label class="ion-text-wrap">
-            <p><strong>2.</strong> Switch metrics using the dropdown (Weight, Volume, Distance, Duration)</p>
-          </ion-label>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label class="ion-text-wrap">
-            <p><strong>3.</strong> Try different time ranges with the button bar below the chart</p>
-          </ion-label>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label class="ion-text-wrap">
-            <p><strong>4.</strong> Watch the animated number flipper update as you drag</p>
           </ion-label>
         </ion-item>
       </ion-list>

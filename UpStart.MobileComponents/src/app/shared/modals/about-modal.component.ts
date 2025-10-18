@@ -24,6 +24,7 @@ import {
   shareOutline
 } from 'ionicons/icons';
 import { Share } from '@capacitor/share';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-about-modal',
@@ -61,29 +62,26 @@ export class AboutModalComponent {
     this.modalCtrl.dismiss();
   }
 
-  openEmail() {
-    // Placeholder - will be implemented with actual email
-    console.log('Open email');
+  async openEmail() {
+    // Opens default email app with pre-filled address
+    window.location.href = 'mailto:hello@heyupstart.com';
   }
 
-  openWebsite() {
-    // Placeholder - will be implemented with actual URL
-    console.log('Open website');
+  async openWebsite() {
+    await Browser.open({ url: 'https://heyupstart.com' });
   }
 
-  openLinkedIn() {
-    // Placeholder
-    console.log('Open LinkedIn');
+  async openLinkedIn() {
+    await Browser.open({ url: 'https://www.linkedin.com/in/chiefupstart/' });
   }
 
-  openTwitter() {
-    // Placeholder
+  async openTwitter() {
+    // Placeholder for future use
     console.log('Open Twitter');
   }
 
-  openGitHub() {
-    // Placeholder
-    console.log('Open GitHub');
+  async openGitHub() {
+    await Browser.open({ url: 'https://github.com/upstart-productions' });
   }
 
   async shareApp() {
@@ -91,7 +89,7 @@ export class AboutModalComponent {
       await Share.share({
         title: 'UpStart Mobile Components',
         text: 'Check out this amazing collection of production-ready Ionic & Angular components! Perfect for accelerating mobile app development.',
-        url: 'https://github.com/upstart-productions/mobile-components',
+        url: 'https://github.com/upstart-productions/UpStart.MobileComponents',
         dialogTitle: 'Share UpStart Components'
       });
     } catch (error) {

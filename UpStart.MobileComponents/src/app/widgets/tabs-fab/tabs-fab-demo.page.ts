@@ -18,6 +18,10 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
+  IonText,
+  IonList,
+  IonItem,
+  IonChip,
   ActionSheetController,
   AlertController
 } from '@ionic/angular/standalone';
@@ -40,7 +44,10 @@ import {
   closeOutline,
   notificationsOutline,
   bookmarkOutline,
-  heartOutline
+  heartOutline,
+  appsOutline,
+  addCircleOutline,
+  swapHorizontalOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -66,12 +73,17 @@ import {
     IonCard,
     IonCardHeader,
     IonCardTitle,
-    IonCardContent
+    IonCardContent,
+    IonText,
+    IonList,
+    IonItem,
+    IonChip
   ]
 })
 export class TabsFabDemoPage implements OnInit {
   selectedTab: string = 'home';
   fabClickCount: number = 0;
+  eventLog: string[] = [];
 
   constructor(
     private actionSheetController: ActionSheetController,
@@ -95,14 +107,23 @@ export class TabsFabDemoPage implements OnInit {
       closeOutline,
       notificationsOutline,
       bookmarkOutline,
-      heartOutline
+      heartOutline,
+      appsOutline,
+      addCircleOutline,
+      swapHorizontalOutline
     });
   }
 
   ngOnInit() {}
 
+  onTabClick(tab: string) {
+    this.selectedTab = tab;
+    this.logEvent(`Tab selected: ${tab.charAt(0).toUpperCase() + tab.slice(1)}`);
+  }
+
   async openQuickActions() {
     this.fabClickCount++;
+    this.logEvent(`FAB clicked (click #${this.fabClickCount})`);
 
     const actionSheet = await this.actionSheetController.create({
       header: 'Quick Actions',
@@ -161,6 +182,8 @@ export class TabsFabDemoPage implements OnInit {
   }
 
   async showActionMessage(action: string) {
+    this.logEvent(`Quick action: ${action}`);
+    
     const alert = await this.alertController.create({
       header: 'Action Selected',
       message: `You selected: ${action}\n\nIn a real app, this would open a modal or navigate to the appropriate page.`,
@@ -170,9 +193,13 @@ export class TabsFabDemoPage implements OnInit {
     await alert.present();
   }
 
-  onTabChange(event: any) {
-    this.selectedTab = event.detail.tab;
-    console.log('Tab changed to:', this.selectedTab);
+  private logEvent(message: string) {
+    const timestamp = new Date().toLocaleTimeString();
+    this.eventLog.unshift(`[${timestamp}] ${message}`);
+    
+    if (this.eventLog.length > 10) {
+      this.eventLog = this.eventLog.slice(0, 10);
+    }
   }
 }
 

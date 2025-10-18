@@ -24,6 +24,7 @@
     "@capacitor-community/sqlite": "^7.0.2",
     "@capacitor/app": "7.1.0",
     "@capacitor/app-launcher": "^7.0.2",
+    "@capacitor/browser": "^7.0.2",
     "@capacitor/camera": "^7.0.2",
     "@capacitor/core": "7.4.3",
     "@capacitor/file-viewer": "^1.0.5",
