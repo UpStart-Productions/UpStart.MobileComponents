@@ -66,6 +66,9 @@ export class CalendarComponent implements OnInit, OnChanges {
   dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   isYearPickerOpen = false;
   
+  // Unique ID for this calendar instance to avoid conflicts
+  uniqueId = `calendar-${Math.random().toString(36).substr(2, 9)}`;
+  
   // Cache the days to avoid recalculation on every change detection
   private _daysInMonth: (moment.Moment | null)[] = [];
   private _lastMonthKey = '';

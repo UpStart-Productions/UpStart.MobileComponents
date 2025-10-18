@@ -31,11 +31,23 @@ ion-button {
   margin-top: 8px;
 }
 
-ion-item {
-  --padding-start: 0;
-  --inner-padding-end: 0;
-}
-
 ion-list {
-  margin-top: 8px;
+  margin: 0;
+  
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+    
+    p {
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      margin: 0;
+    }
+  }
 }

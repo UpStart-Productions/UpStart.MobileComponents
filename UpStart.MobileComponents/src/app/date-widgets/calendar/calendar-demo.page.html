@@ -3,17 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/date-widgets"></ion-back-button>
     </ion-buttons>
-    <ion-title>Calendar Widget</ion-title>
+    <ion-title>Calendar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Calendar Widget</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <!-- Introduction Card -->
   <ion-card>
     <ion-card-header>
@@ -40,7 +34,7 @@
 
   <!-- Example 1: Basic Calendar -->
   <div class="example-section">
-    <h2 class="example-title">Example 1: Basic Calendar</h2>
+    <h2 class="example-title">Basic Calendar</h2>
     <p class="example-description">Simple date selection with current date pre-selected.</p>
     
     <div class="calendar-wrapper">
@@ -57,30 +51,9 @@
     </ion-text>
   </div>
 
-  <!-- Example 2: Sobriety Date with Max Date -->
-  <div class="example-section">
-    <h2 class="example-title">Example 2: Date with Maximum Limit</h2>
-    <p class="example-description">Used in NephoPhone for sobriety date selection - future dates are disabled.</p>
-    
-    <div class="calendar-wrapper">
-      <app-calendar
-        [selectedDate]="sobrietyDate"
-        [maxDate]="maxDate"
-        (dateSelected)="onSobrietyDateSelected($event)">
-      </app-calendar>
-    </div>
-
-    <ion-text color="medium">
-      <p style="font-size: 12px; margin-top: 16px;">
-        <strong>Configuration:</strong> <code>[maxDate]="today"</code> prevents future date selection<br>
-        <strong>Sobriety Date:</strong> {{ sobrietyDate | date:'MMM d, yyyy' }}
-      </p>
-    </ion-text>
-  </div>
-
   <!-- Example 3: Activity Tracker with Completed Dates -->
   <div class="example-section">
-    <h2 class="example-title">Example 3: Activity Tracker</h2>
+    <h2 class="example-title">Activity Tracker</h2>
     <p class="example-description">Shows completed activities with visual indicators.</p>
     
     <div class="calendar-wrapper">
@@ -117,11 +90,8 @@
 
   <!-- Features List -->
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Widget Features</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
-      <ion-list [inset]="true">
+      <ion-list>
         <ion-item>
           <ion-label class="ion-text-wrap">
             <h3>Month/Year Navigation</h3>

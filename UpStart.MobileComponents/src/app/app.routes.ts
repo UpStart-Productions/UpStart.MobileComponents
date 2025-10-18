@@ -98,10 +98,6 @@ export const routes: Routes = [
     loadComponent: () => import('./sqlite-demo/sqlite-demo.page').then((m) => m.SqliteDemoPage),
   },
   {
-    path: 'feature5',
-    loadComponent: () => import('./feature5/feature5.page').then((m) => m.Feature5Page),
-  },
-  {
     path: '',
     redirectTo: 'intro',
     pathMatch: 'full',

@@ -91,29 +91,6 @@
     </div>
   </div>
 
-  <!-- Testing Tools -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>🧪 Testing Tools</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-button expand="block" (click)="testAllTiers()">
-        <ion-icon slot="start" name="play-outline"></ion-icon>
-        Test All Tiers (Sequential)
-      </ion-button>
-      
-      <ion-button expand="block" fill="outline" (click)="testHaptics()">
-        <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
-        Test Haptic Feedback
-      </ion-button>
-
-      <div class="status-info">
-        <p><strong>Queue Length:</strong> {{ getQueueLength() }}</p>
-        <p><strong>Currently Animating:</strong> {{ isAnimating() ? 'Yes' : 'No' }}</p>
-      </div>
-    </ion-card-content>
-  </ion-card>
-
   <!-- Features -->
   <ion-card>
     <ion-card-header>

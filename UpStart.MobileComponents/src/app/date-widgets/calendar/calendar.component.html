@@ -6,7 +6,7 @@
     
     <div class="header-center">
       <div 
-        id="year-trigger"
+        [id]="uniqueId"
         class="month-year-selector"
         (click)="toggleYearPicker()"
         (touchstart)="$event.stopPropagation()"
@@ -22,7 +22,7 @@
   </div>
 
   <ion-popover 
-    trigger="year-trigger" 
+    [trigger]="uniqueId" 
     [isOpen]="isYearPickerOpen" 
     (didDismiss)="isYearPickerOpen = false"
     side="bottom"

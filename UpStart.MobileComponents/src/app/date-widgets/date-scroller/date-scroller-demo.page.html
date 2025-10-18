@@ -3,16 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/date-widgets"></ion-back-button>
     </ion-buttons>
-    <ion-title>Date Scroller Widget</ion-title>
+    <ion-title>Date Scroller</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Date Scroller</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <!-- Introduction Card -->
   <ion-card>
@@ -119,11 +114,8 @@
 
   <!-- Features List -->
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Widget Features</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
-      <ion-list [inset]="true">
+      <ion-list>
         <ion-item>
           <ion-label class="ion-text-wrap">
             <h3>Auto-scroll to Today</h3>

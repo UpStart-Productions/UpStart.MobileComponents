@@ -203,8 +203,8 @@ export class VideoHeaderDemoPage implements OnInit, AfterViewInit, OnDestroy {
         getComputedStyle(document.documentElement).getPropertyValue('--ion-safe-area-top') || '0'
       );
 
-      // Add some padding to ensure full coverage
-      const padding = 38;
+      // Reduce padding to prevent overlap with features card
+      const padding = 0;
       this.videoHeight = cardHeight + safeAreaTop + padding;
 
       console.log('📐 Video height calculated:', {

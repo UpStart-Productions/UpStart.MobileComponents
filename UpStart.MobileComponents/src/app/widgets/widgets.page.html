@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Widgets</ion-title>
+    <ion-title>UI Components</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="presentAboutModal()">
         <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
@@ -13,12 +13,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Widgets</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list [inset]="true">
     <ion-item button [routerLink]="['/widgets/feelings']" detail="true">
       <ion-label>
@@ -29,50 +23,43 @@
 
     <ion-item button [routerLink]="['/widgets/step-card']" detail="true">
       <ion-label>
-        <h2>Step Card Widget</h2>
+        <h2>Step Card</h2>
         <p>Numbered step/milestone card with action buttons</p>
       </ion-label>
     </ion-item>
 
     <ion-item button [routerLink]="['/widgets/progress-ring']" detail="true">
       <ion-label>
-        <h2>Progress Ring Widget</h2>
+        <h2>Progress Ring</h2>
         <p>Circular progress indicator with gradients</p>
       </ion-label>
     </ion-item>
 
     <ion-item button [routerLink]="['/widgets/avatar-picker']" detail="true">
       <ion-label>
-        <h2>Avatar Picker Widget</h2>
+        <h2>Avatar Picker</h2>
         <p>Scrollable avatar selector with 30 images</p>
       </ion-label>
     </ion-item>
 
     <ion-item button [routerLink]="['/widgets/number-flipper']" detail="true">
       <ion-label>
-        <h2>Number Flipper Widget</h2>
+        <h2>Number Flipper</h2>
         <p>Animated number display with smooth digit transitions</p>
       </ion-label>
     </ion-item>
 
     <ion-item button [routerLink]="['/widgets/button-bar']" detail="true">
       <ion-label>
-        <h2>Button Bar Widget</h2>
+        <h2>Custom Button Bar</h2>
         <p>Animated segmented control with sliding highlight</p>
       </ion-label>
     </ion-item>
 
     <ion-item button [routerLink]="['/widgets/tabs-fab']" detail="true">
       <ion-label>
-        <h2>Tab Bar + FAB Widget</h2>
+        <h2>Tab Bar + FAB Button</h2>
         <p>Bottom tab navigation with centered quick action button</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item button detail="true" disabled="true">
-      <ion-label>
-        <h2>Achievement Badge Widget</h2>
-        <p>Coming soon...</p>
       </ion-label>
     </ion-item>
   </ion-list>
